@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Values version="2.0">
+  <value name="node_type">interface</value>
+  <value name="node_nsName">ocp.tools.pub.ntlm</value>
+  <value name="is_public">false</value>
+  <value name="shared">cHJpdmF0ZSBzdGF0aWMgU3RyaW5nIHNldEhlYWRlcnMoSURhdGEgaGVhZGVycywgSHR0cFVyaVJl
+cXVlc3QgcmVxdWVzdCkKewoJU3RyaW5nIGNvbnRlbnRUeXBlID0gbnVsbDsKCUlEYXRhQ3Vyc29y
+IGMgPSBoZWFkZXJzLmdldEN1cnNvcigpOwoJCgl3aGlsZSAoYy5oYXNNb3JlRGF0YSgpKQoJewoJ
+CWMubmV4dCgpOwoJCVN0cmluZyBrZXkgPSBjLmdldEtleSgpOwoJCVN0cmluZyB2YWx1ZSA9IGMu
+Z2V0VmFsdWUoKS50b1N0cmluZygpOwoJCQoJCXJlcXVlc3QuYWRkSGVhZGVyKGtleSwgdmFsdWUp
+OwoJCQoJCWlmIChrZXkuZXF1YWxzKCJDb250ZW50LVR5cGUiKSkKCQkJY29udGVudFR5cGUgPSB2
+YWx1ZTsKCQkKCX0KCQoJYy5kZXN0cm95KCk7CgkKCXJldHVybiBjb250ZW50VHlwZTsKfQoKcHJp
+dmF0ZSBzdGF0aWMgSHR0cEVudGl0eSBjcmVhdGVTdHJpbmdDb250ZW50KFN0cmluZyBjb250ZW50
+KQp7CglyZXR1cm4gY3JlYXRlU3RyaW5nQ29udGVudCgidGV4dC9wbGFpbiIsIENoYXJzZXQuZGVm
+YXVsdENoYXJzZXQoKS5uYW1lKCksIGNvbnRlbnQpOwp9Cgpwcml2YXRlIHN0YXRpYyBIdHRwRW50
+aXR5IGNyZWF0ZVN0cmluZ0NvbnRlbnQoU3RyaW5nIG1pbWVUeXBlLCBTdHJpbmcgY29udGVudCkK
+ewoJcmV0dXJuIGNyZWF0ZVN0cmluZ0NvbnRlbnQobWltZVR5cGUsIENoYXJzZXQuZGVmYXVsdENo
+YXJzZXQoKS5uYW1lKCksIGNvbnRlbnQpOwp9Cgpwcml2YXRlIHN0YXRpYyBIdHRwRW50aXR5IGNy
+ZWF0ZVN0cmluZ0NvbnRlbnQoU3RyaW5nIG1pbWVUeXBlLCBTdHJpbmcgY2hhcnNldCwgU3RyaW5n
+IGNvbnRlbnQpCnsKCWlmIChtaW1lVHlwZSA9PSBudWxsKQoJCW1pbWVUeXBlID0gInRleHQvcGxh
+aW4iOwoJCglpZiAoY2hhcnNldCA9PSBudWxsKQoJCWNoYXJzZXQgPSBDaGFyc2V0LmRlZmF1bHRD
+aGFyc2V0KCkubmFtZSgpOwoJCQoJcmV0dXJuIG5ldyBTdHJpbmdFbnRpdHkoY29udGVudCwgQ29u
+dGVudFR5cGUuY3JlYXRlKG1pbWVUeXBlLCBjaGFyc2V0KSk7Cn0KCnByaXZhdGUgc3RhdGljIFJl
+Z2lzdHJ5PEF1dGhTY2hlbWVQcm92aWRlcj4gZ2V0QXV0aFJlZ2lzdHJ5KCkKewoJUmVnaXN0cnk8
+QXV0aFNjaGVtZVByb3ZpZGVyPiBhdXRoU2NoZW1lUmVnaXN0cnkgPSBSZWdpc3RyeUJ1aWxkZXIu
+PEF1dGhTY2hlbWVQcm92aWRlcj5jcmVhdGUoKS5yZWdpc3RlcihBdXRoU2NoZW1lcy5OVExNLCBu
+ZXcgSkNJRlNOVExNU2NoZW1lRmFjdG9yeSgpKS5idWlsZCgpOwoJCglyZXR1cm4gYXV0aFNjaGVt
+ZVJlZ2lzdHJ5Owp9Cgpwcml2YXRlIHN0YXRpYyBDcmVkZW50aWFsc1Byb3ZpZGVyIGdldENyZWRl
+bnRpYWxzUHJvdmlkZXIoU3RyaW5nIHVzZXIsIFN0cmluZyBwYXNzd29yZCwgU3RyaW5nIGRvbWFp
+biwgU3RyaW5nIGhvc3QpCnsKCU5UQ3JlZGVudGlhbHMgY3JlZGVudGlhbHMgPSBuZXcgTlRDcmVk
+ZW50aWFscyh1c2VyLCBwYXNzd29yZCwgaG9zdCwgZG9tYWluKTsKCUNyZWRlbnRpYWxzUHJvdmlk
+ZXIgY3JQcm92aWRlciA9IG5ldyBCYXNpY0NyZWRlbnRpYWxzUHJvdmlkZXIoKTsKCWNyUHJvdmlk
+ZXIuc2V0Q3JlZGVudGlhbHMobmV3IEF1dGhTY29wZShBdXRoU2NvcGUuQU5ZX0hPU1QsIEF1dGhT
+Y29wZS5BTllfUE9SVCwgQXV0aFNjb3BlLkFOWV9SRUFMTSwgQXV0aFNjaGVtZXMuTlRMTSksIGNy
+ZWRlbnRpYWxzKTsKCQoJcmV0dXJuIGNyUHJvdmlkZXI7Cn0KCi8vIEltcGxlbWVudCBBdXRoU2No
+ZW1lUHJvdmlkZXIgaW50ZXJmYWNlCgpwcml2YXRlIHN0YXRpYyBjbGFzcyBKQ0lGU05UTE1TY2hl
+bWVGYWN0b3J5IGltcGxlbWVudHMgQXV0aFNjaGVtZVByb3ZpZGVyIAp7CiAgICBwdWJsaWMgQXV0
+aFNjaGVtZSBjcmVhdGUoZmluYWwgSHR0cENvbnRleHQgY29udGV4dCkgCiAgICB7CiAgICAgICAg
+ZGVidWdMb2coIkluZm8iLCAiVXNpbmcgTlRMTSBlbmdpbmUiKTsKCiAgICAgICAgcmV0dXJuIG5l
+dyBOVExNU2NoZW1lKG5ldyBOdGxtRW5naW5lSW1wbCgpKTsKICAgIH0KfQoKcHJpdmF0ZSBzdGF0
+aWMgY2xhc3MgTnRsbUVuZ2luZUltcGwgaW1wbGVtZW50cyBOVExNRW5naW5lCnsKCXByaXZhdGUg
+c3RhdGljIGZpbmFsIGludCBUWVBFXzFfRkxBR1MgPSAKICAgICAgICAgICAgTnRsbUZsYWdzLk5U
+TE1TU1BfTkVHT1RJQVRFXzU2IHwgCiAgICAgICAgICAgIE50bG1GbGFncy5OVExNU1NQX05FR09U
+SUFURV8xMjggfCAKICAgICAgICAgICAgTnRsbUZsYWdzLk5UTE1TU1BfTkVHT1RJQVRFX05UTE0y
+IHwgCiAgICAgICAgICAgIE50bG1GbGFncy5OVExNU1NQX05FR09USUFURV9BTFdBWVNfU0lHTiB8
+IAogICAgICAgICAgICBOdGxtRmxhZ3MuTlRMTVNTUF9SRVFVRVNUX1RBUkdFVDsKCiAgICBwdWJs
+aWMgU3RyaW5nIGdlbmVyYXRlVHlwZTFNc2coZmluYWwgU3RyaW5nIGRvbWFpbiwgZmluYWwgU3Ry
+aW5nIHdvcmtzdGF0aW9uKQogICAgICAgICAgICB0aHJvd3MgTlRMTUVuZ2luZUV4Y2VwdGlvbiAK
+ICAgIHsKICAgICAgICAvL2ZpbmFsIFR5cGUxTWVzc2FnZSB0eXBlMU1lc3NhZ2UgPSBuZXcgVHlw
+ZTFNZXNzYWdlKFRZUEVfMV9GTEFHUywgZG9tYWluLCB3b3Jrc3RhdGlvbik7CiAgICAgICAgZmlu
+YWwgVHlwZTFNZXNzYWdlIHR5cGUxTWVzc2FnZSA9IG5ldyBUeXBlMU1lc3NhZ2UoVHlwZTFNZXNz
+YWdlLmdldERlZmF1bHRGbGFncygpLCBkb21haW4sIHdvcmtzdGF0aW9uKTsKCiAgICAgICAgZGVi
+dWdMb2coIkluZm8iLCAiR290IHR5cGUgMSBtZXNzYWdlIik7CgogICAgICAgIHJldHVybiBCYXNl
+NjQuZW5jb2RlKHR5cGUxTWVzc2FnZS50b0J5dGVBcnJheSgpKTsKICAgIH0KCiAgICBwdWJsaWMg
+U3RyaW5nIGdlbmVyYXRlVHlwZTNNc2coZmluYWwgU3RyaW5nIHVzZXJuYW1lLCBmaW5hbCBTdHJp
+bmcgcGFzc3dvcmQsCiAgICAgICAgICAgIGZpbmFsIFN0cmluZyBkb21haW4sIGZpbmFsIFN0cmlu
+ZyB3b3Jrc3RhdGlvbiwgZmluYWwgU3RyaW5nIGNoYWxsZW5nZSkKICAgICAgICAgICAgdGhyb3dz
+IE5UTE1FbmdpbmVFeGNlcHRpb24gCiAgIHsKICAgICAgICBUeXBlMk1lc3NhZ2UgdHlwZTJNZXNz
+YWdlOwogICAKICAgICAgICBkZWJ1Z0xvZygiSW5mbyIsICJHb3QgdHlwZSAyIG1lc3NhZ2UiKTsK
+ICAgICAgICAKICAgICAgICB0cnkgCiAgICAgICAgewogICAgICAgICAgICB0eXBlMk1lc3NhZ2Ug
+PSBuZXcgVHlwZTJNZXNzYWdlKEJhc2U2NC5kZWNvZGUoY2hhbGxlbmdlKSk7CiAgICAgICAgfSAK
+ICAgICAgICBjYXRjaCAoZmluYWwgSU9FeGNlcHRpb24gZXhjZXB0aW9uKSAKICAgICAgICB7CiAg
+ICAgICAgICAgIHRocm93IG5ldyBOVExNRW5naW5lRXhjZXB0aW9uKCJJbnZhbGlkIE5UTE0gdHlw
+ZSAyIG1lc3NhZ2UiLCBleGNlcHRpb24pOwogICAgICAgIH0KICAgICAgICAKICAgICAgICBkZWJ1
+Z0xvZygiSW5mbyIsICJHZW5lcmF0aW5nIHR5cGUgMyBtZXNzYWdlOiIgKyBkb21haW4gKyAiOiIg
+KyB1c2VybmFtZSArICI9IiArIHBhc3N3b3JkKTsKCiAgICAgICAgZmluYWwgaW50IHR5cGUyRmxh
+Z3MgPSB0eXBlMk1lc3NhZ2UuZ2V0RmxhZ3MoKTsKICAgICAgICBmaW5hbCBpbnQgdHlwZTNGbGFn
+cyA9IHR5cGUyRmxhZ3MgJiAoMHhmZmZmZmZmZiBeIChOdGxtRmxhZ3MuTlRMTVNTUF9UQVJHRVRf
+VFlQRV9ET01BSU4gfCBOdGxtRmxhZ3MuTlRMTVNTUF9UQVJHRVRfVFlQRV9TRVJWRVIpKTsKICAg
+ICAgICAKICAgICAgICBmaW5hbCBUeXBlM01lc3NhZ2UgdHlwZTNNZXNzYWdlID0gbmV3IFR5cGUz
+TWVzc2FnZSh0eXBlMk1lc3NhZ2UsIHBhc3N3b3JkLCBkb21haW4sIHVzZXJuYW1lLCB3b3Jrc3Rh
+dGlvbik7CiAgICAgIAogICAgICAgIHR5cGUzTWVzc2FnZS5zZXRGbGFncyh0eXBlM0ZsYWdzKTsK
+ICAgICAgICAKICAgICAgICByZXR1cm4gQmFzZTY0LmVuY29kZSh0eXBlM01lc3NhZ2UudG9CeXRl
+QXJyYXkoKSk7CiAgICB9Cn0KCQpwdWJsaWMgc3RhdGljIHZvaWQgZGVidWdMb2coU3RyaW5nIGRl
+YnVnTGV2ZWwsIFN0cmluZyBtZXNzYWdlKQp7CglJRGF0YSBpbnB1dCA9IElEYXRhRmFjdG9yeS5j
+cmVhdGUoKTsKCUlEYXRhQ3Vyc29yIGlucHV0Q3Vyc29yID0gaW5wdXQuZ2V0Q3Vyc29yKCk7CglJ
+RGF0YVV0aWwucHV0KGlucHV0Q3Vyc29yLCAibWVzc2FnZSIsIG1lc3NhZ2UpOwoJSURhdGFVdGls
+LnB1dChpbnB1dEN1cnNvciwgImZ1bmN0aW9uIiwgImNvbS5vY3AuY29udGFjdG1nbXQiKTsKCUlE
+YXRhVXRpbC5wdXQoaW5wdXRDdXJzb3IsICJsZXZlbCIsIGRlYnVnTGV2ZWwpOwoKCWlucHV0Q3Vy
+c29yLmRlc3Ryb3koKTsKCgl0cnkKCXsKCQlTZXJ2aWNlLmRvSW52b2tlKCJwdWIuZmxvdyIsICJk
+ZWJ1Z0xvZyIsIGlucHV0KTsKCX0KCWNhdGNoKCBFeGNlcHRpb24gZSkKCXsKCQlTZXJ2ZXJBUEku
+bG9nRXJyb3IoZSk7CgkJU2VydmVyQVBJLmxvZ0Vycm9yKG5ldyBTZXJ2aWNlRXhjZXB0aW9uKCJD
+YW5ub3QgbG9nIG1lc3NhZ2U6ICIgKyBtZXNzYWdlKSk7Cgl9ICAgCn0=</value>
+  <value name="encodeutf8">true</value>
+  <value name="extends"></value>
+  <array name="implements" type="value" depth="1">
+  </array>
+  <array name="imports" type="value" depth="1">
+    <value>com.wm.app.b2b.server.ServerAPI</value>
+    <value>com.sun.mail.iap.Response</value>
+    <value>java.io.BufferedInputStream</value>
+    <value>java.io.ByteArrayOutputStream</value>
+    <value>java.io.IOException</value>
+    <value>java.io.InputStream</value>
+    <value>java.nio.charset.Charset</value>
+    <value>java.util.ArrayList</value>
+    <value>java.util.List</value>
+    <value>java.util.Locale</value>
+    <value>jcifs.ntlmssp.NtlmFlags</value>
+    <value>jcifs.ntlmssp.Type1Message</value>
+    <value>jcifs.ntlmssp.Type2Message</value>
+    <value>jcifs.ntlmssp.Type3Message</value>
+    <value>jcifs.util.Base64</value>
+    <value>org.apache.http.Header</value>
+    <value>org.apache.http.HeaderIterator</value>
+    <value>org.apache.http.HttpEntity</value>
+    <value>org.apache.http.HttpRequest</value>
+    <value>org.apache.http.impl.auth.BasicSchemeFactory</value>
+    <value>org.apache.http.impl.auth.DigestSchemeFactory</value>
+    <value>org.apache.http.impl.auth.KerberosSchemeFactory</value>
+    <value>org.apache.http.impl.auth.NTLMEngine</value>
+    <value>org.apache.http.impl.auth.NTLMEngineException</value>
+    <value>org.apache.http.impl.auth.NTLMScheme</value>
+    <value>org.apache.http.impl.auth.SPNegoSchemeFactory</value>
+    <value>org.apache.http.impl.client.BasicCredentialsProvider</value>
+    <value>org.apache.http.impl.client.CloseableHttpClient</value>
+    <value>org.apache.http.impl.client.HttpClientBuilder</value>
+    <value>org.apache.http.impl.client.HttpClients</value>
+    <value>org.apache.http.protocol.HttpContext</value>
+    <value>org.apache.http.auth.AuthScheme</value>
+    <value>org.apache.http.auth.AuthSchemeProvider</value>
+    <value>org.apache.http.auth.AuthScope</value>
+    <value>org.apache.http.auth.AuthenticationException</value>
+    <value>org.apache.http.auth.Credentials</value>
+    <value>org.apache.http.auth.InvalidCredentialsException</value>
+    <value>org.apache.http.auth.MalformedChallengeException</value>
+    <value>org.apache.http.auth.NTCredentials</value>
+    <value>org.apache.http.client.ClientProtocolException</value>
+    <value>org.apache.http.client.CredentialsProvider</value>
+    <value>org.apache.http.client.HttpClient</value>
+    <value>org.apache.http.client.config.AuthSchemes</value>
+    <value>org.apache.http.client.methods.CloseableHttpResponse</value>
+    <value>org.apache.http.client.methods.HttpDelete</value>
+    <value>org.apache.http.client.methods.HttpGet</value>
+    <value>org.apache.http.client.methods.HttpPost</value>
+    <value>org.apache.http.client.methods.HttpPut</value>
+    <value>org.apache.http.client.methods.HttpUriRequest</value>
+    <value>org.apache.http.client.protocol.HttpClientContext</value>
+    <value>org.apache.http.config.Registry</value>
+    <value>org.apache.http.config.RegistryBuilder</value>
+    <value>org.apache.http.entity.ContentType</value>
+    <value>org.apache.http.entity.StringEntity</value>
+  </array>
+</Values>

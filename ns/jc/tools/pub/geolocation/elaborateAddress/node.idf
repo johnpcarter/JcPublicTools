@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Values version="2.0">
+  <value name="node_type">interface</value>
+  <value name="node_subtype">unknown</value>
+  <value name="node_nsName">jc.tools.pub.geolocation.elaborateAddress</value>
+  <value name="is_public">false</value>
+  <value name="shared">CnByaXZhdGUgc3RhdGljIFN0cmluZyByZXBsYWNlU3BhY2VzKFN0cmluZyBzdHIpCnsKCVN0cmlu
+Z1Rva2VuaXplciB0ayA9IG5ldyBTdHJpbmdUb2tlbml6ZXIoc3RyLCAiICIpOwoJU3RyaW5nIG91
+dCA9ICIiOwoJCgl3aGlsZSAodGsuaGFzTW9yZVRva2VucygpKQoJewoJCW91dCArPSB0ay5uZXh0
+VG9rZW4oKTsKCQkKCQlpZiAodGsuaGFzTW9yZVRva2VucygpKQoJCQlvdXQgKz0gIisiOwoJfQoJ
+CglyZXR1cm4gb3V0Owp9</value>
+  <value name="encodeutf8">true</value>
+  <value name="extends"></value>
+  <array name="implements" type="value" depth="1">
+  </array>
+  <array name="imports" type="value" depth="1">
+    <value>com.ibm.icu.util.StringTokenizer</value>
+  </array>
+</Values>

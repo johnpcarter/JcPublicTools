@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Values version="2.0">
+  <value name="node_type">interface</value>
+  <value name="node_nsName">ocp.tools.pub.ldap</value>
+  <value name="is_public">false</value>
+  <value name="encodeutf8">true</value>
+  <value name="shared">CnByaXZhdGUgc3RhdGljIGZpbmFsIFN0cmluZwlTRUFSQ0hfRklMVEVSID0gIigmKG9iamVjdENs
+YXNzPXBlcnNvbikob2JqZWN0Q2xhc3M9dXNlcikoY249KikpIjsKCnByaXZhdGUgc3RhdGljIE1h
+cDxTdHJpbmcsIERpclN5bmNFdmVudExpc3RlbmVyPiBfbGlzdGVuZXJzOwoKc3RhdGljIHsKCV9s
+aXN0ZW5lcnMgPSBuZXcgSGFzaE1hcDxTdHJpbmcsIERpclN5bmNFdmVudExpc3RlbmVyPigpOwp9
+</value>
+  <value name="extends"></value>
+  <array name="implements" type="value" depth="1">
+  </array>
+  <array name="imports" type="value" depth="1">
+    <value>com.wm.app.b2b.server.ServerAPI</value>
+    <value>java.io.File</value>
+    <value>java.io.IOException</value>
+    <value>java.nio.file.Files</value>
+    <value>java.nio.file.Paths</value>
+    <value>java.util.HashMap</value>
+    <value>java.util.Hashtable</value>
+    <value>java.util.Map</value>
+    <value>javax.naming.Context</value>
+    <value>javax.naming.NamingException</value>
+    <value>com.jc.wm.ldap.activedirectory.listener.DirSyncEventListener</value>
+  </array>
+</Values>

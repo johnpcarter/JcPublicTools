@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Values version="2.0">
+  <value name="node_type">interface</value>
+  <value name="node_subtype">unknown</value>
+  <value name="node_nsName">jc.tools.pub.signature</value>
+  <value name="is_public">false</value>
+  <value name="shared"></value>
+  <value name="encodeutf8">true</value>
+  <value name="extends"></value>
+  <array name="implements" type="value" depth="1">
+  </array>
+  <array name="imports" type="value" depth="1">
+    <value>java.security.InvalidKeyException</value>
+    <value>java.security.KeyFactory</value>
+    <value>java.security.KeyPair</value>
+    <value>java.security.KeyPairGenerator</value>
+    <value>java.security.NoSuchAlgorithmException</value>
+    <value>java.security.NoSuchProviderException</value>
+    <value>java.security.PrivateKey</value>
+    <value>java.security.PublicKey</value>
+    <value>java.security.Signature</value>
+    <value>java.security.SignatureException</value>
+    <value>java.security.interfaces.DSAPrivateKey</value>
+    <value>java.security.interfaces.DSAPublicKey</value>
+    <value>java.security.interfaces.RSAPrivateKey</value>
+    <value>java.security.interfaces.RSAPublicKey</value>
+    <value>java.security.spec.InvalidKeySpecException</value>
+    <value>java.security.spec.PKCS8EncodedKeySpec</value>
+    <value>java.security.spec.X509EncodedKeySpec</value>
+    <value>java.util.Base64</value>
+    <value>java.util.Date</value>
+    <value>java.util.HashMap</value>
+    <value>java.util.Map</value>
+    <value>com.nimbusds.jose.*</value>
+    <value>com.nimbusds.jose.crypto.MACSigner</value>
+    <value>com.nimbusds.jose.crypto.MACVerifier</value>
+    <value>com.nimbusds.jose.crypto.RSASSASigner</value>
+    <value>com.nimbusds.jose.crypto.RSASSAVerifier</value>
+    <value>com.nimbusds.jose.util.Base64URL</value>
+    <value>com.nimbusds.jwt.*</value>
+    <value>net.minidev.json.*</value>
+    <value>java.text.ParseException</value>
+  </array>
+</Values>

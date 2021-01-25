@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Values version="2.0">
+  <value name="name">put</value>
+  <value name="encodeutf8">true</value>
+  <value name="body">SURhdGFDdXJzb3IgcGlwZWxpbmVDdXJzb3IgPSBwaXBlbGluZS5nZXRDdXJzb3IoKTsKU3RyaW5n
+IGtleSA9IElEYXRhVXRpbC5nZXRTdHJpbmcocGlwZWxpbmVDdXJzb3IsICJrZXkiKTsKU3RyaW5n
+IHN0YXRjID0gSURhdGFVdGlsLmdldFN0cmluZyhwaXBlbGluZUN1cnNvciwgInN0YXRpYyIpOwpP
+YmplY3QgdmFsdWUgPSBJRGF0YVV0aWwuZ2V0U3RyaW5nKHBpcGVsaW5lQ3Vyc29yLCAidmFsdWUi
+KTsKCi8vIHByb2Nlc3MKCmJvb2xlYW4gaXNTdGF0aWMgPSBmYWxzZTsKdHJ5IHtpc1N0YXRpYyA9
+IEJvb2xlYW4ucGFyc2VCb29sZWFuKHN0YXRjKTsgfSBjYXRjaChFeGNlcHRpb24gZSkge30KCmlm
+IChpc1N0YXRpYykKCV9zdGF0aWNNYXAucHV0KGtleSwgdmFsdWUpOwplbHNlCglTZXJ2aWNlLmdl
+dFNlc3Npb24oKS5wdXQoa2V5LCB2YWx1ZSk7CgovLyBwaXBlbGluZSBvdXQKCnBpcGVsaW5lQ3Vy
+c29yLmRlc3Ryb3koKTs=</value>
+</Values>

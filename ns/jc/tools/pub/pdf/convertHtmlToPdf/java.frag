@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Values version="2.0">
+  <value name="name">convertHtmlToPdf</value>
+  <value name="encodeutf8">true</value>
+  <value name="body">SURhdGFDdXJzb3IgYyA9IHBpcGVsaW5lLmdldEN1cnNvcigpOwpTdHJpbmcgaHRtbFN0cmluZyA9
+IElEYXRhVXRpbC5nZXRTdHJpbmcoYywgImh0bWwiKTsKCQkKQnl0ZUFycmF5T3V0cHV0U3RyZWFt
+IHBkZiA9IG5ldyBCeXRlQXJyYXlPdXRwdXRTdHJlYW0oKTsKCnRyeSB7CgkKCVN0cmluZ1JlYWRl
+ciBpbnB1dCA9IG5ldyBTdHJpbmdSZWFkZXIoaHRtbFN0cmluZyk7CglUaWR5IHRpZHkgPSBuZXcg
+VGlkeSgpOwoJRG9jdW1lbnQgeG1sRG9jID0gdGlkeS5wYXJzZURPTShpbnB1dCwgbnVsbCk7CgoJ
+RG9jdW1lbnQgZm9Eb2MgPSB4bWwyRk8oeG1sRG9jLCAiLi9wYWNrYWdlcy9KY1B1YmxpY1Rvb2xz
+L2NvbmZpZy94aHRtbDJmby54c2wiKTsKCiAgICBwZGYud3JpdGUoZm8yUERGKGZvRG9jKSk7Cn0K
+Y2F0Y2ggKGphdmEuaW8uSU9FeGNlcHRpb24gZSkgewogICAgU3lzdGVtLm91dC5wcmludGxuKCJF
+cnJvciB3cml0aW5nIFBERjogIiArIGUpOwp9CgpJRGF0YVV0aWwucHV0KGMsICJwZGYiLCBwZGYu
+dG9CeXRlQXJyYXkoKSk7CmMuZGVzdHJveSgpOwoJ</value>
+</Values>

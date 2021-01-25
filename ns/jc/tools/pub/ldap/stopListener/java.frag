@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Values version="2.0">
+  <value name="name">stopListener</value>
+  <value name="encodeutf8">true</value>
+  <value name="body">SURhdGFDdXJzb3IgcGlwZWxpbmVDdXJzb3IgPSBwaXBlbGluZS5nZXRDdXJzb3IoKTsKU3RyaW5n
+IHNlcnZpY2UgPSBJRGF0YVV0aWwuZ2V0U3RyaW5nKHBpcGVsaW5lQ3Vyc29yLCAic2VydmljZSIp
+OwoKRGlyU3luY0V2ZW50TGlzdGVuZXIgbGlzdGVuZXIgPSBudWxsOwoKdHJ5IAp7CQoJbGlzdGVu
+ZXIgPSBfbGlzdGVuZXJzLmdldChzZXJ2aWNlKTsKCQkJIAoJaWYgKGxpc3RlbmVyICE9IG51bGwp
+CgkJbGlzdGVuZXIucGxlYXNlU3RvcCgpOwoJCSAgCglfbGlzdGVuZXJzLnJlbW92ZShzZXJ2aWNl
+KTsKfQpjYXRjaCAoTmFtaW5nRXhjZXB0aW9uIGUpIAp7Cgl0aHJvdyBuZXcgU2VydmljZUV4Y2Vw
+dGlvbigiTERBUCBzdG9wIGZhaWx1cmUuICIgKyBlKTsKfSAKIApJRGF0YVV0aWwucHV0KHBpcGVs
+aW5lQ3Vyc29yLCAiZm91bmQiLCBsaXN0ZW5lciAhPSBudWxsKTsKcGlwZWxpbmVDdXJzb3IuZGVz
+dHJveSgpOwog</value>
+</Values>

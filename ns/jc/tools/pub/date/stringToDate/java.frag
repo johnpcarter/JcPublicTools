@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Values version="2.0">
+  <value name="name">stringToDate</value>
+  <value name="encodeutf8">true</value>
+  <value name="body">Ly8gcGlwZWxpbmUgaW4KCklEYXRhQ3Vyc29yIHBpcGVsaW5lQ3Vyc29yID0gcGlwZWxpbmUuZ2V0
+Q3Vyc29yKCk7ClN0cmluZyBzdHJpbmcgPSBJRGF0YVV0aWwuZ2V0U3RyaW5nKHBpcGVsaW5lQ3Vy
+c29yLCAic3RyaW5nIik7ClN0cmluZyBwYXR0ZXJuID0gSURhdGFVdGlsLmdldFN0cmluZyhwaXBl
+bGluZUN1cnNvciwgInBhdHRlcm4iKTsKCi8vIHByb2Nlc3MKCmlmIChwYXR0ZXJuID09IG51bGwp
+Cgl0aHJvdyBuZXcgU2VydmljZUV4Y2VwdGlvbigiUGxlYXNlIHByb3ZpZGUgYSB2YWxpZCBkYXRl
+IHBhdHRlcm4iKTsKCkRhdGUgZGF0ZSA9IG51bGw7CgppZiAoc3RyaW5nID09IG51bGwpCnsKCWRh
+dGUgPSBuZXcgRGF0ZSgpOwp9CmVsc2UKewoJdHJ5IHsKCQlkYXRlID0gbmV3IFNpbXBsZURhdGVG
+b3JtYXQocGF0dGVybikucGFyc2Uoc3RyaW5nKTsKCX0gY2F0Y2ggKFBhcnNlRXhjZXB0aW9uIGUp
+IHsKCQl0aHJvdyBuZXcgU2VydmljZUV4Y2VwdGlvbihlKTsKCX0KfQoKLy8gcGlwZWxpbmUgb3V0
+CgpJRGF0YVV0aWwucHV0KHBpcGVsaW5lQ3Vyc29yLCAiZGF0ZSIsIGRhdGUpOwpwaXBlbGluZUN1
+cnNvci5kZXN0cm95KCk7</value>
+</Values>

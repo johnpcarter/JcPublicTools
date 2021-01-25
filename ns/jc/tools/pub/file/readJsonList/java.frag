@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Values version="2.0">
+  <value name="name">readJsonList</value>
+  <value name="encodeutf8">true</value>
+  <value name="body">Ly8gcGlwZWxpbmUgaW4KCklEYXRhQ3Vyc29yIHBpcGVsaW5lQ3Vyc29yID0gcGlwZWxpbmUuZ2V0
+Q3Vyc29yKCk7ClN0cmluZyBmbmFtZSA9IElEYXRhVXRpbC5nZXRTdHJpbmcocGlwZWxpbmVDdXJz
+b3IsICJmbmFtZSIpOwoKLy8gcHJvY2VzcwoKTGlzdDxJRGF0YT4Jcm93cyA9IG5ldyBBcnJheUxp
+c3Q8SURhdGE+KCk7Cgp0cnkgewoJTGlzdDxTdHJpbmc+IGxpbmVzID0gRmlsZXMucmVhZEFsbExp
+bmVzKEZpbGVTeXN0ZW1zLmdldERlZmF1bHQoKS5nZXRQYXRoKGZuYW1lKSk7CgkKCWZvciAoaW50
+IGkgPSAwOyBpIDwgbGluZXMuc2l6ZSgpOyBpKyspIHsKCQoJCVZhbHVlcyB2ID0gbmV3IEpTT05D
+b2RlcigpLmRlY29kZUZyb21CeXRlcyhsaW5lcy5nZXQoaSkuZ2V0Qnl0ZXMoKSk7CgkJCgkJcm93
+cy5hZGQobWFrZVZhbHVlc0ludG9JRGF0YSh2KSk7Cgl9CgkKfSBjYXRjaCAoSU9FeGNlcHRpb24g
+ZSkgewoJdGhyb3cgbmV3IFNlcnZpY2VFeGNlcHRpb24oZSk7Cn0KCi8vIHBpcGVsaW5lIG91dAoK
+SURhdGFVdGlsLnB1dCggcGlwZWxpbmVDdXJzb3IsICJyb3dzIiwgcm93cy50b0FycmF5KG5ldyBJ
+RGF0YVtyb3dzLnNpemUoKV0pKTsKcGlwZWxpbmVDdXJzb3IuZGVzdHJveSgpOw==</value>
+</Values>

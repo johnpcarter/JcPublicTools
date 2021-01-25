@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Values version="2.0">
+  <value name="node_type">interface</value>
+  <value name="node_nsName">ocp.tools.pub.date</value>
+  <value name="is_public">false</value>
+  <value name="encodeutf8">true</value>
+  <value name="shared">CnB1YmxpYyBzdGF0aWMgRGF0ZSBnZXRFbmRPZkRheShEYXRlIGRhdGUpIAp7CgkgIExvY2FsRGF0
+ZVRpbWUgbG9jYWxEYXRlVGltZSA9IGRhdGVUb0xvY2FsRGF0ZVRpbWUoZGF0ZSk7CgkgIExvY2Fs
+RGF0ZVRpbWUgZW5kT2ZEYXkgPSBsb2NhbERhdGVUaW1lLndpdGgoTG9jYWxUaW1lLk1BWCk7Cgkg
+IHJldHVybiBsb2NhbERhdGVUaW1lVG9EYXRlKGVuZE9mRGF5KTsKCX0KCglwdWJsaWMgc3RhdGlj
+IERhdGUgZ2V0U3RhcnRPZkRheShEYXRlIGRhdGUpIAoJewoJICBMb2NhbERhdGVUaW1lIGxvY2Fs
+RGF0ZVRpbWUgPSBkYXRlVG9Mb2NhbERhdGVUaW1lKGRhdGUpOwoJICBMb2NhbERhdGVUaW1lIHN0
+YXJ0T2ZEYXkgPSBsb2NhbERhdGVUaW1lLndpdGgoTG9jYWxUaW1lLk1JTik7CgkgIC8vTG9jYWxE
+YXRlVGltZSBzdGFydE9mRGF5ID0gbG9jYWxEYXRlVGltZS5hdFN0YXJ0T2ZEYXkoKTsKCSAgcmV0
+dXJuIGxvY2FsRGF0ZVRpbWVUb0RhdGUoc3RhcnRPZkRheSk7Cgl9CgkKCXByaXZhdGUgc3RhdGlj
+IERhdGUgbG9jYWxEYXRlVGltZVRvRGF0ZShMb2NhbERhdGVUaW1lIHN0YXJ0T2ZEYXkpIAoJewoJ
+CXJldHVybiBEYXRlLmZyb20oc3RhcnRPZkRheS5hdFpvbmUoWm9uZUlkLnN5c3RlbURlZmF1bHQo
+KSkudG9JbnN0YW50KCkpOwoJfQoKCXByaXZhdGUgc3RhdGljIExvY2FsRGF0ZVRpbWUgZGF0ZVRv
+TG9jYWxEYXRlVGltZShEYXRlIGRhdGUpIAoJewoJCXJldHVybiBMb2NhbERhdGVUaW1lLm9mSW5z
+dGFudChJbnN0YW50Lm9mRXBvY2hNaWxsaShkYXRlLmdldFRpbWUoKSksIFpvbmVJZC5zeXN0ZW1E
+ZWZhdWx0KCkpOwoJfQoKCXB1YmxpYyBzdGF0aWMgY2xhc3MgRGF0ZVRpbWVVdGlscyB7CgkgICAg
+cHJpdmF0ZSBzdGF0aWMgZmluYWwgbG9uZyBPTkVfSE9VUl9JTl9NUyA9IDM2MDAwMDA7CgkgICAg
+cHJpdmF0ZSBzdGF0aWMgZmluYWwgbG9uZyBPTkVfTUlOX0lOX01TID0gNjAwMDA7CgkgICAgcHJp
+dmF0ZSBzdGF0aWMgZmluYWwgbG9uZyBPTkVfU0VDX0lOX01TID0gMTAwMDsKCgkgICAgcHVibGlj
+IHN0YXRpYyBEYXRlIHN1bVRpbWVUb0RhdGUoRGF0ZSBkYXRlLCBpbnQgaG91cnMsIGludCBtaW5z
+LCBpbnQgc2VjcykgewoJICAgICAgICBsb25nIGhvdXJzVG9BZGRJbk1zID0gaG91cnMgKiBPTkVf
+SE9VUl9JTl9NUzsKCSAgICAgICAgbG9uZyBtaW5zVG9BZGRJbk1zID0gbWlucyAqIE9ORV9NSU5f
+SU5fTVM7CgkgICAgICAgIGxvbmcgc2Vjc1RvQWRkSW5NcyA9IHNlY3MgKiBPTkVfU0VDX0lOX01T
+OwoJICAgICAgICByZXR1cm4gbmV3IERhdGUoZGF0ZS5nZXRUaW1lKCkgKyBob3Vyc1RvQWRkSW5N
+cyArIG1pbnNUb0FkZEluTXMgKyBzZWNzVG9BZGRJbk1zKTsKCSAgICB9Cgl9</value>
+  <value name="extends"></value>
+  <array name="implements" type="value" depth="1">
+  </array>
+  <array name="imports" type="value" depth="1">
+    <value>java.text.DateFormat</value>
+    <value>java.text.ParseException</value>
+    <value>java.text.SimpleDateFormat</value>
+    <value>java.time.Instant</value>
+    <value>java.time.LocalDate</value>
+    <value>java.time.LocalDateTime</value>
+    <value>java.time.LocalTime</value>
+    <value>java.time.ZoneId</value>
+    <value>java.util.Calendar</value>
+    <value>java.util.Date</value>
+    <value>java.util.GregorianCalendar</value>
+  </array>
+</Values>

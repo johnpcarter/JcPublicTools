@@ -1,0 +1,127 @@
+style {
+	font: 12px "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+	text-align: left;
+	padding: 4px;
+}
+
+body {
+	background-color: white;
+	color: #777777;
+}
+
+.header {
+	width: 100%;
+	height: 60px;
+	padding: 0px;
+	position: relative;
+	border-bottom: 0.5px solid gray;
+}
+
+.main {
+	width: 100%;
+	min-height:85%;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	margin-left: 10px;
+}
+
+.footer {
+	width: 100%;
+	padding: 0px;
+	position: relative;
+	border-top:  0.5px solid gray;
+}
+
+.left_side {
+	display: block;
+	width: 50%;
+	height: 40;
+	position: absolute;
+	left: 20px;
+	overflow: auto;
+}
+
+.right_side {
+	display: block;
+	width: 50%;
+	height: 40;
+	position: absolute;
+	clear: left;
+	right: 20px;
+	overflow: auto;
+	font: medium "Courier New", Courier, mono;
+	line-height: 10px;
+}
+
+.left_side_body {
+	display: block;
+	width: 65%;
+	position: absolute;
+	left: 20px;
+	overflow: auto;
+	padding-left: 10px;
+}
+
+.right_side_body {
+	display: block;
+	width: 25%;
+	position: absolute;
+	clear: left;
+	right: 20px;
+	overflow: auto;
+	font: medium "Courier New", Courier, mono;
+	line-height: 10px;
+}
+
+h2 {
+	padding-right: 10px;
+	padding-left: 10px;
+	text-align: right;
+}
+
+h3 {
+	padding-bottom: 5px;
+	padding-left: 0px;
+	text-align: left;
+	font-style: italic;
+}
+
+p {
+	padding: 0px;
+}
+
+a {
+    color: rgb(88, 77, 77);
+	text-decoration: none;
+}
+
+a:visited {
+    color: rgb(121, 121, 121);
+	text-decoration: none;
+}
+
+a:hover {
+    color: rgb(0, 0, 0);
+    text-decoration: underline;
+}
+
+.small {
+	font-size: small;
+	color: #aaaaaa;
+}
+
+.box {
+	font-size: small;
+	background-color: #f7f4f1;
+	border-style: none;
+	padding: 25px;
+	position: relative;
+}
+
+.bullet {
+	font-weight: bold;
+	text-align: right;
+	padding: 0;
+	font-variant: normal;
+	bottom: 5px;
+}

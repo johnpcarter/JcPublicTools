@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Values version="2.0">
+  <value name="name">apisForPackage</value>
+  <value name="encodeutf8">true</value>
+  <value name="body">Ly8gcGlwZWxpbmUgaW4KCklEYXRhQ3Vyc29yIHBpcGVsaW5lQ3Vyc29yID0gcGlwZWxpbmUuZ2V0
+Q3Vyc29yKCk7ClN0cmluZyBwYWNrYWdlTmFtZSA9IElEYXRhVXRpbC5nZXRTdHJpbmcocGlwZWxp
+bmVDdXJzb3IsICJwYWNrYWdlTmFtZSIpOwpTdHJpbmcgZGV0YWlscyA9IElEYXRhVXRpbC5nZXRT
+dHJpbmcocGlwZWxpbmVDdXJzb3IsICJkZXRhaWxzIik7CnBpcGVsaW5lQ3Vyc29yLmRlc3Ryb3ko
+KTsKCi8vIHBpcGVsaW5lIG91dAoKaWYgKGRldGFpbHMgIT0gbnVsbCAmJiBkZXRhaWxzLmVxdWFs
+c0lnbm9yZUNhc2UoInRydWUiKSkKCUlEYXRhVXRpbC5wdXQocGlwZWxpbmVDdXJzb3IsICJhcGlz
+IiwgUGFja2FnZUludHJvc3BlY3Rvci5kZWZhdWx0SW5zdGFuY2UoZmFsc2UpLmFwaURldGFpbHNG
+b3JQYWNrYWdlKHBhY2thZ2VOYW1lKSk7CmVsc2UKCUlEYXRhVXRpbC5wdXQocGlwZWxpbmVDdXJz
+b3IsICJhcGlzIiwgUGFja2FnZUludHJvc3BlY3Rvci5kZWZhdWx0SW5zdGFuY2UoZmFsc2UpLmFw
+aVJlZmVyZW5jZXNGb3JQYWNrYWdlKHBhY2thZ2VOYW1lKSk7CnBpcGVsaW5lQ3Vyc29yLmRlc3Ry
+b3koKTsKCgk=</value>
+</Values>
