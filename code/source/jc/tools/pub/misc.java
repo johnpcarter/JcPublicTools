@@ -75,6 +75,7 @@ public final class misc
 	{
 		// --- <<IS-START(invokeAsync)>> ---
 		// @sigtype java 3.5
+		// [i] field:0:required ifc
 		// [i] field:0:required service
 		// [i] record:0:required pipeline
 		

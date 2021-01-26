@@ -446,12 +446,11 @@ public final class idata
 		// @sigtype java 3.5
 		// [i] field:0:optional prefix
 		// [i] field:0:optional valueTokenizer
-		// [i] record:0:required extraInfo
+		// [i] record:0:required doc
 		// [i] record:1:required extraInfo
 		// [i] - field:0:required key
 		// [i] - field:0:required type
 		// [i] - object:0:required value
-		// [i] record:0:required doc
 		// [o] record:0:required doc
 		// pipeline in
 		

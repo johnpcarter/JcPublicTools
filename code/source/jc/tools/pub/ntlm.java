@@ -132,7 +132,7 @@ public final class ntlm
 		String pass = IDataUtil.getString(authCursor, "pass");
 		authCursor.destroy();
 		
-		// process 
+		// process
 		
 		if (!type.equals("NTLM"))
 			throw new ServiceException("User pub.client.http for normal http client requests");

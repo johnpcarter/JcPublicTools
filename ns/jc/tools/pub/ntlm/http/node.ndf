@@ -7,15 +7,18 @@
   <record name="svc_sig" javaclass="com.wm.util.Values">
     <record name="sig_in" javaclass="com.wm.util.Values">
       <value name="node_type">record</value>
+      <value name="node_subtype">unknown</value>
       <value name="is_public">false</value>
       <value name="field_type">record</value>
       <value name="field_dim">0</value>
+      <value name="wrapper_type">IData</value>
       <value name="nillable">true</value>
       <value name="form_qualified">false</value>
       <value name="is_global">false</value>
       <array name="rec_fields" type="record" depth="1">
         <record javaclass="com.wm.util.Values">
           <value name="node_type">unknown</value>
+          <value name="node_subtype">unknown</value>
           <value name="node_comment"></value>
           <record name="node_hints" javaclass="com.wm.util.Values">
             <value name="field_usereditable">true</value>
@@ -34,6 +37,7 @@
         </record>
         <record javaclass="com.wm.util.Values">
           <value name="node_type">unknown</value>
+          <value name="node_subtype">unknown</value>
           <value name="node_comment"></value>
           <record name="node_hints" javaclass="com.wm.util.Values">
             <value name="field_usereditable">true</value>
@@ -59,6 +63,7 @@
         </record>
         <record javaclass="com.wm.util.Values">
           <value name="node_type">unknown</value>
+          <value name="node_subtype">unknown</value>
           <value name="node_comment"></value>
           <record name="node_hints" javaclass="com.wm.util.Values">
             <value name="field_usereditable">true</value>
@@ -80,6 +85,7 @@
         </record>
         <record javaclass="com.wm.util.Values">
           <value name="node_type">record</value>
+          <value name="node_subtype">unknown</value>
           <value name="node_comment"></value>
           <record name="node_hints" javaclass="com.wm.util.Values">
             <value name="field_largerEditor">false</value>
@@ -89,12 +95,14 @@
           <value name="field_name">data</value>
           <value name="field_type">record</value>
           <value name="field_dim">0</value>
+          <value name="wrapper_type">IData</value>
           <value name="nillable">true</value>
           <value name="form_qualified">false</value>
           <value name="is_global">false</value>
           <array name="rec_fields" type="record" depth="1">
             <record javaclass="com.wm.util.Values">
               <value name="node_type">record</value>
+              <value name="node_subtype">unknown</value>
               <value name="node_comment"></value>
               <record name="node_hints" javaclass="com.wm.util.Values">
                 <value name="field_largerEditor">false</value>
@@ -114,6 +122,7 @@
             </record>
             <record javaclass="com.wm.util.Values">
               <value name="node_type">unknown</value>
+              <value name="node_subtype">unknown</value>
               <value name="node_comment"></value>
               <record name="node_hints" javaclass="com.wm.util.Values">
                 <value name="field_usereditable">true</value>
@@ -133,6 +142,7 @@
             </record>
             <record javaclass="com.wm.util.Values">
               <value name="node_type">unknown</value>
+              <value name="node_subtype">unknown</value>
               <value name="node_comment"></value>
               <record name="node_hints" javaclass="com.wm.util.Values">
                 <value name="field_largerEditor">false</value>
@@ -149,6 +159,7 @@
             </record>
             <record javaclass="com.wm.util.Values">
               <value name="node_type">unknown</value>
+              <value name="node_subtype">unknown</value>
               <value name="node_comment"></value>
               <record name="node_hints" javaclass="com.wm.util.Values">
                 <value name="field_usereditable">true</value>
@@ -171,6 +182,7 @@
         </record>
         <record javaclass="com.wm.util.Values">
           <value name="node_type">record</value>
+          <value name="node_subtype">unknown</value>
           <value name="node_comment"></value>
           <record name="node_hints" javaclass="com.wm.util.Values">
             <value name="field_largerEditor">false</value>
@@ -181,12 +193,14 @@
           <value name="field_type">record</value>
           <value name="field_dim">0</value>
           <value name="field_opt">true</value>
+          <value name="wrapper_type">IData</value>
           <value name="nillable">true</value>
           <value name="form_qualified">false</value>
           <value name="is_global">false</value>
           <array name="rec_fields" type="record" depth="1">
             <record javaclass="com.wm.util.Values">
               <value name="node_type">unknown</value>
+              <value name="node_subtype">unknown</value>
               <value name="node_comment"></value>
               <record name="node_hints" javaclass="com.wm.util.Values">
                 <value name="field_usereditable">true</value>
@@ -207,6 +221,7 @@
             </record>
             <record javaclass="com.wm.util.Values">
               <value name="node_type">record</value>
+              <value name="node_subtype">unknown</value>
               <value name="node_comment"></value>
               <record name="node_hints" javaclass="com.wm.util.Values">
                 <value name="field_usereditable">true</value>
@@ -225,6 +240,7 @@
             </record>
             <record javaclass="com.wm.util.Values">
               <value name="node_type">unknown</value>
+              <value name="node_subtype">unknown</value>
               <value name="node_comment"></value>
               <record name="node_hints" javaclass="com.wm.util.Values">
                 <value name="field_usereditable">true</value>
@@ -244,6 +260,7 @@
             </record>
             <record javaclass="com.wm.util.Values">
               <value name="node_type">record</value>
+              <value name="node_subtype">unknown</value>
               <value name="node_comment"></value>
               <record name="node_hints" javaclass="com.wm.util.Values">
                 <value name="field_usereditable">true</value>
@@ -263,6 +280,7 @@
             </record>
             <record javaclass="com.wm.util.Values">
               <value name="node_type">record</value>
+              <value name="node_subtype">unknown</value>
               <value name="node_comment"></value>
               <record name="node_hints" javaclass="com.wm.util.Values">
                 <value name="field_usereditable">true</value>
@@ -284,6 +302,7 @@
         </record>
         <record javaclass="com.wm.util.Values">
           <value name="node_type">record</value>
+          <value name="node_subtype">unknown</value>
           <value name="node_comment"></value>
           <record name="node_hints" javaclass="com.wm.util.Values">
             <value name="field_largerEditor">false</value>
@@ -294,6 +313,7 @@
           <value name="field_type">record</value>
           <value name="field_dim">0</value>
           <value name="field_opt">true</value>
+          <value name="wrapper_type">IData</value>
           <value name="nillable">true</value>
           <value name="form_qualified">false</value>
           <value name="is_global">false</value>
@@ -303,6 +323,7 @@
         </record>
         <record javaclass="com.wm.util.Values">
           <value name="node_type">unknown</value>
+          <value name="node_subtype">unknown</value>
           <value name="node_comment"></value>
           <record name="node_hints" javaclass="com.wm.util.Values">
             <value name="field_usereditable">true</value>
@@ -325,15 +346,18 @@
     </record>
     <record name="sig_out" javaclass="com.wm.util.Values">
       <value name="node_type">record</value>
+      <value name="node_subtype">unknown</value>
       <value name="is_public">false</value>
       <value name="field_type">record</value>
       <value name="field_dim">0</value>
+      <value name="wrapper_type">IData</value>
       <value name="nillable">true</value>
       <value name="form_qualified">false</value>
       <value name="is_global">false</value>
       <array name="rec_fields" type="record" depth="1">
         <record javaclass="com.wm.util.Values">
           <value name="node_type">unknown</value>
+          <value name="node_subtype">unknown</value>
           <value name="node_comment"></value>
           <record name="node_hints" javaclass="com.wm.util.Values">
             <value name="field_usereditable">true</value>
@@ -352,6 +376,7 @@
         </record>
         <record javaclass="com.wm.util.Values">
           <value name="node_type">record</value>
+          <value name="node_subtype">unknown</value>
           <value name="node_comment"></value>
           <record name="node_hints" javaclass="com.wm.util.Values">
             <value name="field_largerEditor">false</value>
@@ -362,12 +387,14 @@
           <value name="field_type">record</value>
           <value name="field_dim">0</value>
           <value name="field_opt">true</value>
+          <value name="wrapper_type">IData</value>
           <value name="nillable">true</value>
           <value name="form_qualified">false</value>
           <value name="is_global">false</value>
           <array name="rec_fields" type="record" depth="1">
             <record javaclass="com.wm.util.Values">
               <value name="node_type">record</value>
+              <value name="node_subtype">unknown</value>
               <value name="node_comment"></value>
               <record name="node_hints" javaclass="com.wm.util.Values">
                 <value name="field_largerEditor">false</value>
@@ -386,6 +413,7 @@
             </record>
             <record javaclass="com.wm.util.Values">
               <value name="node_type">unknown</value>
+              <value name="node_subtype">unknown</value>
               <value name="node_comment"></value>
               <record name="node_hints" javaclass="com.wm.util.Values">
                 <value name="field_usereditable">true</value>
@@ -404,6 +432,7 @@
             </record>
             <record javaclass="com.wm.util.Values">
               <value name="node_type">unknown</value>
+              <value name="node_subtype">unknown</value>
               <value name="node_comment"></value>
               <record name="node_hints" javaclass="com.wm.util.Values">
                 <value name="field_usereditable">true</value>
@@ -425,6 +454,7 @@
         </record>
         <record javaclass="com.wm.util.Values">
           <value name="node_type">record</value>
+          <value name="node_subtype">unknown</value>
           <value name="node_comment"></value>
           <record name="node_hints" javaclass="com.wm.util.Values">
             <value name="field_largerEditor">false</value>
@@ -434,12 +464,14 @@
           <value name="field_name">body</value>
           <value name="field_type">record</value>
           <value name="field_dim">0</value>
+          <value name="wrapper_type">IData</value>
           <value name="nillable">true</value>
           <value name="form_qualified">false</value>
           <value name="is_global">false</value>
           <array name="rec_fields" type="record" depth="1">
             <record javaclass="com.wm.util.Values">
               <value name="node_type">unknown</value>
+              <value name="node_subtype">unknown</value>
               <value name="node_comment"></value>
               <record name="node_hints" javaclass="com.wm.util.Values">
                 <value name="field_largerEditor">false</value>
@@ -456,6 +488,7 @@
             </record>
             <record javaclass="com.wm.util.Values">
               <value name="node_type">unknown</value>
+              <value name="node_subtype">unknown</value>
               <value name="node_comment"></value>
               <record name="node_hints" javaclass="com.wm.util.Values">
                 <value name="field_largerEditor">false</value>
@@ -523,7 +556,6 @@ HttpConnectionException
   <value name="audit_level">off</value>
   <value name="check_internal_acls">no</value>
   <value name="icontext_policy">$null</value>
-  <value name="svcInvkURLAlias"></value>
   <value name="system_service">no</value>
   <value name="retry_max">0</value>
   <value name="retry_interval">0</value>
@@ -538,6 +570,26 @@ HttpConnectionException
     <value name="stopExecution">false</value>
     <value name="onError">true</value>
   </record>
+  <record name="circuitbreakersettings" javaclass="com.wm.util.Values">
+    <value name="enabled">false</value>
+    <value name="failureEvent">1</value>
+    <value name="timeoutPeriod">60</value>
+    <value name="failureThreshold">5</value>
+    <value name="failurePeriod">60</value>
+    <value name="openAction">1</value>
+    <value name="serviceToInvoke"></value>
+    <value name="resetPeriod">300</value>
+    <value name="cancelThreadOnTimeout">false</value>
+  </record>
+  <array name="allowedHTTPMethods" type="value" depth="1">
+    <value>HEAD</value>
+    <value>DELETE</value>
+    <value>POST</value>
+    <value>GET</value>
+    <value>OPTIONS</value>
+    <value>PUT</value>
+    <value>PATCH</value>
+  </array>
   <value name="pipeline_option">1</value>
   <null name="originURI"/>
   <value name="modifiable">true</value>
