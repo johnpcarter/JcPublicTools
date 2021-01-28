@@ -18,7 +18,7 @@ or
 
 If your packages directory is already under version control
 
-*$git submodule add https://github.com/johnpcarter/JcPublicTools.git JcAPITools*  
+*$git submodule add https://github.com/johnpcarter/JcPublicTools.git JcPublicTools*  
 
 or if you are not, then simply clone the repository
 
