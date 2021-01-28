@@ -2,7 +2,7 @@
 
 A complimentary set of services to use with your webMethods runtime to develop integration faster.
 
-Service documentation is available in Designer via the comments of each service or online [here](https://raw.githack.com/johnpcarter/JcPublicTools/main/pub/index.html)
+Service documentation is available in Designer via the comments of each service.
 
 **Installation**
 
