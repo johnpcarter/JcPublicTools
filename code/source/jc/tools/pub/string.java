@@ -50,7 +50,12 @@ public final class string
 		
 		// pipeline out
 		
-		IDataUtil.put(pipelineCursor, "match", string.toLowerCase().endsWith(endsWith.toLowerCase()));
+		if (string != null) {
+			IDataUtil.put(pipelineCursor, "match", string.toLowerCase().endsWith(endsWith.toLowerCase()));
+		} else {
+			IDataUtil.put(pipelineCursor, "match", false);
+		}
+		
 		pipelineCursor.destroy();
 		
 			
