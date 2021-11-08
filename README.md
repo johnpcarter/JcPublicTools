@@ -6,7 +6,7 @@ Service documentation is available in Designer via the comments of each service.
 
 **Installation**
 
-This source code is a webMethods Micro Service Runtime package and you will need to first install the Software AG Micro Service Runtime or download a docker image.
+This source code is a webMethods Integration/Micro Service Runtime package and you will need to first install this or download a docker image.
 
 **local installation**
 
