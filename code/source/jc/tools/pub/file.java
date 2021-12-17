@@ -243,7 +243,8 @@ public final class file
 		// [i] field:0:required path
 		// [i] field:0:required file
 		// [o] object:0:required file
-		
+		// [o] field:0:required simpleName
+		// [o] field:0:required path
 		// pipeline in
 		IDataCursor pipelineCursor = pipeline.getCursor();
 		String path = IDataUtil.getString(pipelineCursor, "path");
@@ -264,6 +265,8 @@ public final class file
 		// pipeline out
 		
 		IDataUtil.put(pipelineCursor, "file", file);
+		IDataUtil.put(pipelineCursor, "simpleName", file.getName());
+		IDataUtil.put(pipelineCursor, "path", file.getParentFile().getAbsolutePath());
 		pipelineCursor.destroy();
 		
 			
