@@ -45,9 +45,9 @@ public final class introspect
 		// pipeline out
 		
 		if (details != null && details.equalsIgnoreCase("true"))
-			IDataUtil.put(pipelineCursor, "apis", PackageIntrospector.defaultInstance(false).apiDetailsForPackage(packageName));
+			IDataUtil.put(pipelineCursor, "apis", PackageIntrospector.defaultInstance("default").apiDetailsForPackage(packageName));
 		else
-			IDataUtil.put(pipelineCursor, "apis", PackageIntrospector.defaultInstance(false).apiReferencesForPackage(packageName));
+			IDataUtil.put(pipelineCursor, "apis", PackageIntrospector.defaultInstance("default").apiReferencesForPackage(packageName));
 		pipelineCursor.destroy();
 		
 			
@@ -82,10 +82,10 @@ public final class introspect
 		IData[] packages = null;
 		
 		if (packageName == null) {
-			packages = PackageIntrospector.defaultInstance(false).packageDetails();
+			packages = PackageIntrospector.defaultInstance("default").packageDetails();
 		} else {
 			packages = new IData[1];
-			packages[0] = PackageIntrospector.defaultInstance(false).packageInfo(packageName).toIData(true, true, null);
+			packages[0] = PackageIntrospector.defaultInstance("default").packageInfo(packageName).toIData(true, true, null);
 		}
 		
 		// pipeline out
@@ -105,13 +105,14 @@ public final class introspect
 	{
 		// --- <<IS-START(packageList)>> ---
 		// @sigtype java 3.5
+		// [i] field:0:optional rescan {"false","true"}
 		// [o] field:1:required packages
 		// pipeline in
 		
 		IDataCursor pipelineCursor = pipeline.getCursor();
-		pipelineCursor.destroy();
+		String rescan = IDataUtil.getString(pipelineCursor, "rescan");
 				
-		String[] packages = new PackageIntrospector("./packages", "^(?!Wm).*").packages();
+		String[] packages = PackageIntrospector.defaultInstance("default", "./packages", null, rescan != null && rescan.equalsIgnoreCase("true")).packages();
 				
 		// pipeline out
 				
@@ -130,7 +131,7 @@ public final class introspect
 	{
 		// --- <<IS-START(rescan)>> ---
 		// @sigtype java 3.5
-		PackageIntrospector.defaultInstance(true);
+		PackageIntrospector.defaultInstance("default", "/packages", null, true);
 			
 		// --- <<IS-END>> ---
 
@@ -152,7 +153,7 @@ public final class introspect
 		String packageName = IDataUtil.getString(pipelineCursor, "name");
 		pipelineCursor.destroy();
 		
-		String[] services = PackageIntrospector.defaultInstance(false).servicesForPackage(packageName);
+		String[] services = PackageIntrospector.defaultInstance("default").servicesForPackage(packageName);
 		
 		// pipeline out
 		
