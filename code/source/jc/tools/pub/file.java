@@ -543,6 +543,55 @@ public final class file
 
 
 
+	public static final void readPropertiesFile (IData pipeline)
+        throws ServiceException
+	{
+		// --- <<IS-START(readPropertiesFile)>> ---
+		// @sigtype java 3.5
+		// [i] field:0:required filename
+		// [o] record:1:required properties
+		// [o] - field:0:required key
+		// [o] - object:0:required value
+		// pipeline in
+		
+		IDataCursor c = pipeline.getCursor();
+		String filename = IDataUtil.getString(c, "filename");
+		
+		// process
+		
+		String[] props = readFileAsStringList(filename);
+		ArrayList<IData> out = new ArrayList<IData>();
+		
+		for (String p : props) {
+			
+			if (p.indexOf("=") != -1) {
+				
+				int i = p.indexOf("=");
+				String k = p.substring(0, i);
+				String v = p.substring(i+1);
+				
+				IData o = IDataFactory.create();
+				IDataCursor oc = o.getCursor();
+								
+				IDataUtil.put(oc, "key", k);
+				IDataUtil.put(oc, "value", v);
+				oc.destroy();
+				
+				out.add(o);
+			}
+		}
+		
+		// pipeline out
+		
+		IDataUtil.put(c, "properties", out.toArray(new IData[out.size()]));
+		c.destroy();
+		// --- <<IS-END>> ---
+
+                
+	}
+
+
+
 	public static final void untar (IData pipeline)
         throws ServiceException
 	{
@@ -774,7 +823,47 @@ public final class file
 	}
 
 	// --- <<IS-START-SHARED>> ---
+		
+	private static String[] readFileAsStringList(String fname) throws ServiceException {
+		
+		InputStream is = new ByteArrayInputStream(readFile(fname));
+		
+		List<String> lines = new ArrayList<String>();
+		String line = null;
+		
+		try (BufferedReader rdr = new BufferedReader(new InputStreamReader(is));) {
+			while ((line=rdr.readLine()) != null) {
+				lines.add(line);
+			}
+		} catch (IOException e) {
+			throw new ServiceException(e);
+		}
 			
+		return lines.toArray(new String[lines.size()]);
+	}
+	
+	private static byte[] readFile(String fname) throws ServiceException {
+		
+		if (fname == null)
+			throw new ServiceException("provide file name please");
+		
+		// process
+		
+		byte[] data = null;
+		
+		try {
+			data = Files.readAllBytes(Paths.get(fname));
+		} catch(NoSuchFileException e) {
+			
+			throw new ServiceException(e);
+		} catch (IOException e) {
+			
+			throw new ServiceException(e);
+		}
+				
+		return data;
+	}
+	
 	public static void decompressGzTar(File in, File out) throws IOException {
 		
 		try (GzipCompressorInputStream gzipIn = new GzipCompressorInputStream(new FileInputStream(in))) {
