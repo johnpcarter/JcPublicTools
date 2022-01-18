@@ -13,5 +13,6 @@
   <array name="imports" type="value" depth="1">
     <value>java.util.ArrayList</value>
     <value>java.util.List</value>
+    <value>java.util.StringTokenizer</value>
   </array>
 </Values>

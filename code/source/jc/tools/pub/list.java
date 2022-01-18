@@ -9,6 +9,7 @@ import com.wm.app.b2b.server.ServiceException;
 // --- <<IS-START-IMPORTS>> ---
 import java.util.ArrayList;
 import java.util.List;
+import java.util.StringTokenizer;
 // --- <<IS-END-IMPORTS>> ---
 
 public final class list
@@ -121,6 +122,47 @@ public final class list
 		IDataUtil.put(c, "docList", out.toArray(new IData[out.size()]));
 		c.destroy();
 			
+		// --- <<IS-END>> ---
+
+                
+	}
+
+
+
+	public static final void convertStringToStringList (IData pipeline)
+        throws ServiceException
+	{
+		// --- <<IS-START(convertStringToStringList)>> ---
+		// @sigtype java 3.5
+		// [i] field:0:optional separator
+		// [i] field:0:required in
+		// [o] object:1:required list
+		// pipeline in
+		
+		IDataCursor pipelineCursor = pipeline.getCursor();
+		String in = IDataUtil.getString(pipelineCursor, "in");
+		String separator = IDataUtil.getString(pipelineCursor, "separator");
+		
+		// process
+		
+		if (separator == null)
+			separator = ",";
+		
+		List<String> out = new ArrayList<String>();
+		
+		if (in != null) {
+			
+			StringTokenizer tk = new StringTokenizer(in, separator);
+			
+			while (tk.hasMoreTokens()) {
+				out.add(tk.nextToken());
+			}
+		}
+		
+		// pipeline out
+		
+		IDataUtil.put(pipelineCursor, "out", out.toArray(new String[out.size()]));
+		pipelineCursor.destroy();
 		// --- <<IS-END>> ---
 
                 
