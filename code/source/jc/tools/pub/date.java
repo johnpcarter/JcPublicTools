@@ -122,16 +122,19 @@ public final class date
 		IDataCursor pipelineCursor = pipeline.getCursor();
 		Object date = IDataUtil.get(pipelineCursor, "date");
 		String pattern = IDataUtil.getString(pipelineCursor, "pattern");
-		pipelineCursor.destroy();
 		
 		// process
 		
-		DateFormat fmt = new SimpleDateFormat(pattern);
-		String stringDate = fmt.format(date);
+		if (date != null) {
+					
+			DateFormat fmt = new SimpleDateFormat(pattern);
+			String stringDate = fmt.format(date);
 		
 		// pipeline out
 		
-		IDataUtil.put(pipelineCursor, "stringDate", stringDate);
+			IDataUtil.put(pipelineCursor, "stringDate", stringDate);
+		}
+		
 		pipelineCursor.destroy();
 		// --- <<IS-END>> ---
 
