@@ -173,6 +173,48 @@ public final class string
 
 
 
+	public static final void sanitize (IData pipeline)
+        throws ServiceException
+	{
+		// --- <<IS-START(sanitize)>> ---
+		// @sigtype java 3.5
+		// [i] field:0:required value
+		// [i] field:0:optional defaultValue
+		// [i] field:0:optional maxLen
+		// [o] field:0:required value
+		// pipeline in
+		
+		IDataCursor pipelineCursor = pipeline.getCursor();
+		String value = IDataUtil.getString(pipelineCursor, "value");
+		String defaultValue = IDataUtil.getString(pipelineCursor, "defaultValue");
+		String maxLen = IDataUtil.getString(pipelineCursor, "maxLen");
+				
+		// process 
+		
+		int max = 0;
+				
+		try { max = Integer.parseInt(maxLen); } catch(Exception e) {} // do now't
+				
+		if (value == null) 
+			value = defaultValue;
+		
+		if (value != null) {
+			
+			value = value.replaceAll("[ _\\.\\@\\!\\%\\$\\#\\^\\&\\*\\(\\)]","-");
+		}
+		
+		// pipeline out
+				
+		IDataUtil.put(pipelineCursor, "value", value.toLowerCase());
+		pipelineCursor.destroy();
+			
+		// --- <<IS-END>> ---
+
+                
+	}
+
+
+
 	public static final void splitUrl (IData pipeline)
         throws ServiceException
 	{

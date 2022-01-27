@@ -161,7 +161,7 @@ public final class list
 		
 		// pipeline out
 		
-		IDataUtil.put(pipelineCursor, "out", out.toArray(new String[out.size()]));
+		IDataUtil.put(pipelineCursor, "list", out.toArray(new String[out.size()]));
 		pipelineCursor.destroy();
 		// --- <<IS-END>> ---
 

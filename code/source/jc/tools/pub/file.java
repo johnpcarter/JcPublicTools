@@ -1271,11 +1271,9 @@ public final class file
 		        fos = new FileOutputStream(zipFile);
 		        zos = new ZipOutputStream(fos);
 		
-		        System.out.println("Output to Zip : " + zipFile);
 		        FileInputStream in = null;
 		
 		        for (String file: this.fileList) {
-		            System.out.println("File Added : " + file);
 		            ZipEntry ze = new ZipEntry(source + File.separator + file);
 		            zos.putNextEntry(ze);
 		            try {
@@ -1339,7 +1337,6 @@ public final class file
 	            while(ze != null){
 	                String fileName = ze.getName();
 	                File newFile = new File(destDir + File.separator + fileName);
-	                System.out.println("Unzipping to "+newFile.getAbsolutePath());
 	                //create directories for sub directories in zip
 	                new File(newFile.getParent()).mkdirs();
 	                FileOutputStream fos = new FileOutputStream(newFile);
