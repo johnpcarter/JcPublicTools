@@ -7,6 +7,8 @@ import com.wm.util.Values;
 import com.wm.app.b2b.server.Service;
 import com.wm.app.b2b.server.ServiceException;
 // --- <<IS-START-IMPORTS>> ---
+import com.wm.util.GlobalVariables;
+import com.wm.app.b2b.server.globalvariables.GlobalVariablesManager;
 import java.io.IOException;
 import java.math.BigInteger;
 import java.nio.file.FileSystem;
@@ -33,6 +35,52 @@ public final class misc
 
 	// ---( server methods )---
 
+
+
+
+	public static final void getGlobalVariable (IData pipeline)
+        throws ServiceException
+	{
+		// --- <<IS-START(getGlobalVariable)>> ---
+		// @sigtype java 3.5
+		// [i] field:0:required key
+		// [i] field:0:optional defaultValue
+		// [i] field:0:optional ignoreErrors
+		// [o] field:0:required value
+		// [o] field:0:required isSecure
+		// pipeline
+		
+		IDataCursor cursor = pipeline.getCursor();
+		String key = IDataUtil.getString(cursor, "key");
+		String value = IDataUtil.getString(cursor, "defaultValue");
+		String ignoreError = IDataUtil.getString(cursor, "ignoreErrors");
+		
+		// process
+		
+		String isSecure = "false";
+		
+		try {
+		    GlobalVariablesManager manager = GlobalVariablesManager.getInstance();
+		    GlobalVariables.GlobalVariableValue gvValue = manager.getGlobalVariableValue(key);
+		    
+		    value = gvValue.getValue();
+		    isSecure = "" + gvValue.isSecure();
+		}
+		catch (Exception e) {
+			if (value == null && (ignoreError == null || ignoreError == "false"))
+				throw new ServiceException(e);
+		}
+		
+		// pipeline out
+		
+		IDataUtil.put(cursor, "value", value);
+		IDataUtil.put(cursor, "isSecure", isSecure);
+			
+		cursor.destroy();
+		// --- <<IS-END>> ---
+
+                
+	}
 
 
 

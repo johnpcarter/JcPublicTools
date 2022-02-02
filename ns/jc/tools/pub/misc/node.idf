@@ -55,6 +55,8 @@ ZXR1cm4gIiIgKyBfY2hhcnNbM10gKyBfY2hhcnNbNF07Cn0KCQ==</value>
   <array name="implements" type="value" depth="1">
   </array>
   <array name="imports" type="value" depth="1">
+    <value>com.wm.util.GlobalVariables</value>
+    <value>com.wm.app.b2b.server.globalvariables.GlobalVariablesManager</value>
     <value>java.io.IOException</value>
     <value>java.math.BigInteger</value>
     <value>java.nio.file.FileSystem</value>
