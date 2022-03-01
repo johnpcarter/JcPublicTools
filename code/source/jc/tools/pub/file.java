@@ -358,7 +358,7 @@ public final class file
 					@Override
 					public boolean accept(File file, String filename) {
 						
-						return !filename.startsWith(".") && (filter == null || filename.contains(filter));
+						return !filename.startsWith(".") && (filter == null || filename.contains(filter.toLowerCase()));
 					}
 				});
 			else

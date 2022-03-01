@@ -200,7 +200,7 @@ public final class string
 		
 		if (value != null) {
 			
-			value = value.replaceAll("[ _\\.\\@\\!\\%\\$\\#\\^\\&\\*\\(\\)]","-");
+			value = value.replaceAll("[/ _\\.\\@\\!\\%\\$\\#\\^\\&\\*\\(\\)]","-");
 		}
 		
 		// pipeline out
