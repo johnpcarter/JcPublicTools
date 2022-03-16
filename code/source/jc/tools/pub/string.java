@@ -33,6 +33,42 @@ public final class string
 
 
 
+	public static final void clean (IData pipeline)
+        throws ServiceException
+	{
+		// --- <<IS-START(clean)>> ---
+		// @sigtype java 3.5
+		// [i] field:0:required string
+		// [i] field:0:required suffixToRemove
+		// [o] field:0:required string
+		// pipeline in
+		
+		IDataCursor pipelineCursor = pipeline.getCursor();
+		String string = IDataUtil.getString(pipelineCursor, "string");
+		String suffixToRemove = IDataUtil.getString(pipelineCursor, "suffixToRemove");
+		
+		// process
+		
+		if (string != null) {
+			if (string.startsWith(suffixToRemove + "-")) {
+				
+				string = string.substring(suffixToRemove.length()+1);
+			} else if (string.endsWith("." + suffixToRemove) || string.endsWith("-" + suffixToRemove)) {
+				string = string.substring(0, string.length() - suffixToRemove.length()-1);
+			}
+		}
+		// pipeline out
+		
+		IDataUtil.put(pipelineCursor, "string", string);
+		pipelineCursor.destroy();
+			
+		// --- <<IS-END>> ---
+
+                
+	}
+
+
+
 	public static final void endsWith (IData pipeline)
         throws ServiceException
 	{

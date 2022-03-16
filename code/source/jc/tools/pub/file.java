@@ -210,7 +210,7 @@ public final class file
 		// [i] field:0:required fname
 		// [o] field:0:required exists {"true","false"}
 		// [o] field:0:optional isDir
-		// pipeline in
+		//filePath pipeline in
 		
 		IDataCursor pipelineCursor = pipeline.getCursor();
 		String	fname = IDataUtil.getString(pipelineCursor, "fname");
@@ -235,41 +235,63 @@ public final class file
 
 
 
-	public static final void getFileReference (IData pipeline)
+	public static final void findFileInDirectory (IData pipeline)
         throws ServiceException
 	{
-		// --- <<IS-START(getFileReference)>> ---
+		// --- <<IS-START(findFileInDirectory)>> ---
 		// @sigtype java 3.5
-		// [i] field:0:required path
+		// [i] field:0:required rootDir
 		// [i] field:0:required file
-		// [o] object:0:required file
-		// [o] field:0:required simpleName
-		// [o] field:0:required path
+		// [o] field:0:required filePath
 		// pipeline in
 		IDataCursor pipelineCursor = pipeline.getCursor();
-		String path = IDataUtil.getString(pipelineCursor, "path");
+		String path = IDataUtil.getString(pipelineCursor, "rootDir");
 		String f = IDataUtil.getString(pipelineCursor, "file");
 		
 		// process
 		
-		File file;
-		
-		if (path != null)
-			file = new File(path, f);
-		else
-			file = new File(f);
-		
-		if (!file.exists())
-			throw new ServiceException("File '" + (path != null ? path + "/" + file : file) + "' does not exist!");
+		String filePath = findPath(path, f);
 		
 		// pipeline out
 		
-		IDataUtil.put(pipelineCursor, "file", file);
-		IDataUtil.put(pipelineCursor, "simpleName", file.getName());
-		IDataUtil.put(pipelineCursor, "path", file.getParentFile().getAbsolutePath());
+		IDataUtil.put(pipelineCursor, "filePath", filePath);
 		pipelineCursor.destroy();
 		
 			
+		// --- <<IS-END>> ---
+
+                
+	}
+
+
+
+	public static final void getParentFolder (IData pipeline)
+        throws ServiceException
+	{
+		// --- <<IS-START(getParentFolder)>> ---
+		// @sigtype java 3.5
+		// [i] field:0:required filename
+		// [i] field:0:optional altFolder
+		// [o] field:0:required parent
+		// pipeline in
+		
+		IDataCursor pipelineCursor = pipeline.getCursor();
+		String	filename = IDataUtil.getString(pipelineCursor, "filename");
+		String	altFolder = IDataUtil.getString(pipelineCursor, "altFolder");
+		
+		String parent = null;
+		
+		if (filename != null) {
+			parent = new File(filename).getParent();
+			if (altFolder != null) {
+				parent = new File(parent, altFolder).getPath();
+			}
+		}
+		
+		// pipeline out
+		
+		IDataUtil.put(pipelineCursor, "parent", parent);
+		pipelineCursor.destroy();
 		// --- <<IS-END>> ---
 
                 
@@ -454,6 +476,7 @@ public final class file
 		// [i] field:0:required fname
 		// [i] field:0:required loadAs {"bytes","string","stream"}
 		// [i] field:0:optional ignoreError {"false","true"}
+		// [o] field:0:required name
 		// [o] object:0:optional bytes
 		// [o] field:0:optional string
 		// [o] object:0:optional stream
@@ -484,6 +507,8 @@ public final class file
 		}
 		
 		// pipeline out
+		
+		IDataUtil.put(c, "name", new File(fname).getName());
 		
 		if (data != null) {
 			
@@ -738,11 +763,13 @@ public final class file
 		// [i] - object:0:optional bytes
 		// [i] - object:0:optional stream
 		// [i] field:0:optional ext
+		// [i] field:0:optional filenamePrefix
 		// [o] field:0:required filename
 		// pipeline in
 		
 		IDataCursor pipelineCursor = pipeline.getCursor();
 		String path = IDataUtil.getString(pipelineCursor, "path");
+		String filenamePrefix = IDataUtil.getString(pipelineCursor, "filenamePrefix");
 		IData data = IDataUtil.getIData(pipelineCursor, "data");
 		String ext = IDataUtil.getString(pipelineCursor, "ext");
 		
@@ -760,11 +787,11 @@ public final class file
 		else if (bytes != null)
 			stream = new ByteArrayInputStream(bytes);
 		
-		MimeContentReader mf = new MimeContentReader(path, stream, ext);
+		MimeContentReader mf = new MimeContentReader(path, filenamePrefix, stream, ext);
 		
 		// pipeline out
 		
-		IDataUtil.put(pipelineCursor, "filename", mf.lastReadFile);
+		IDataUtil.put(pipelineCursor, "filename", mf.lastReadFile());
 		pipelineCursor.destroy();
 		// --- <<IS-END>> ---
 
@@ -824,6 +851,27 @@ public final class file
 
 	// --- <<IS-START-SHARED>> ---
 		
+	public static String findPath(String basePath, String file) {
+	    
+		File[] files = new File(basePath).listFiles();
+		String foundPath;
+	
+		for (int i = 0; i < files.length; i++) {
+						
+			if (file.equals(files[i].getName())) {
+				return files[i].getAbsolutePath();
+			} else if (files[i].isDirectory()) {
+				foundPath = findPath(files[i].getAbsolutePath(), file);
+				
+				if (foundPath != null) {
+					return foundPath;
+				}
+			}
+		}
+		
+		return null;
+	}
+	
 	private static String[] readFileAsStringList(String fname) throws ServiceException {
 		
 		InputStream is = new ByteArrayInputStream(readFile(fname));
@@ -906,12 +954,14 @@ public final class file
 		
 		private String _ext;
 		private String _path;
+		private String _prefix;
 		private String _marker;
 		
-		public MimeContentReader(String path, InputStream in, String ext) throws ServiceException {
+		public MimeContentReader(String path, String filenamePrefix, InputStream in, String ext) throws ServiceException {
 			
 			this._ext = ext;
 			this._path = path;
+			this._prefix = filenamePrefix;
 			
 			OutputStream out = null;
 			byte[] buffer = new byte[8 * 1024];
@@ -933,6 +983,15 @@ public final class file
 						throw new ServiceException(e);
 					}
 		    	}
+			}
+		}
+		
+		public String lastReadFile() {
+			
+			if (lastReadFile != null) {
+				return lastReadFile;
+			} else {
+				return fileName;
 			}
 		}
 		
@@ -973,6 +1032,10 @@ public final class file
 	
 						this.fileName = this.fileName.substring(0, this.fileName.indexOf("\""));
 						
+						if (this._prefix != null) {
+							this.fileName = this._prefix + "-" + this.fileName;
+						}
+												
 						System.out.println("Next file is " + this.fileName);
 					}
 					

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Values version="2.0">
+  <value name="name">getParentFolder</value>
+  <value name="encodeutf8">true</value>
+  <value name="body">Ly8gcGlwZWxpbmUgaW4KCklEYXRhQ3Vyc29yIHBpcGVsaW5lQ3Vyc29yID0gcGlwZWxpbmUuZ2V0
+Q3Vyc29yKCk7ClN0cmluZwlmaWxlbmFtZSA9IElEYXRhVXRpbC5nZXRTdHJpbmcocGlwZWxpbmVD
+dXJzb3IsICJmaWxlbmFtZSIpOwpTdHJpbmcJYWx0Rm9sZGVyID0gSURhdGFVdGlsLmdldFN0cmlu
+ZyhwaXBlbGluZUN1cnNvciwgImFsdEZvbGRlciIpOwoKU3RyaW5nIHBhcmVudCA9IG51bGw7Cgpp
+ZiAoZmlsZW5hbWUgIT0gbnVsbCkgewoJcGFyZW50ID0gbmV3IEZpbGUoZmlsZW5hbWUpLmdldFBh
+cmVudCgpOwoJaWYgKGFsdEZvbGRlciAhPSBudWxsKSB7CgkJcGFyZW50ID0gbmV3IEZpbGUocGFy
+ZW50LCBhbHRGb2xkZXIpLmdldFBhdGgoKTsKCX0KfQoKLy8gcGlwZWxpbmUgb3V0CgpJRGF0YVV0
+aWwucHV0KHBpcGVsaW5lQ3Vyc29yLCAicGFyZW50IiwgcGFyZW50KTsKcGlwZWxpbmVDdXJzb3Iu
+ZGVzdHJveSgpOw==</value>
+</Values>
