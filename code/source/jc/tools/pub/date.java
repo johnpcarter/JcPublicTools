@@ -10,14 +10,21 @@ import com.wm.app.b2b.server.ServiceException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.DayOfWeek;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.Month;
 import java.time.ZoneId;
+import java.time.ZoneOffset;
+import java.time.format.TextStyle;
+import java.time.temporal.TemporalAdjusters;
+import java.time.temporal.WeekFields;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.Locale;
 // --- <<IS-END-IMPORTS>> ---
 
 public final class date
@@ -41,66 +48,66 @@ public final class date
 	{
 		// --- <<IS-START(dateTimeRangeForDayDate)>> ---
 		// @sigtype java 3.5
-		// [i] object:0:required date
-		// [o] object:0:required dateTimeAtStartOfDate
-		// [o] object:0:required dateTimeAtEndOfDate
+		// [i] object:0:optional date
+		// [i] field:0:optional dateRange {"DAY","WEEK","MONTH","YEAR"}
+		// [o] object:0:required start
+		// [o] object:0:required end
+		// [o] field:0:optional label
 		// pipeline in
 		
 		IDataCursor pipelineCursor = pipeline.getCursor();
 		Date date = (Date) IDataUtil.get(pipelineCursor, "date");
+		String dateRange = IDataUtil.getString(pipelineCursor, "dateRange");
+		
 		pipelineCursor.destroy();
 		
 		Date start = null;
 		Date end = null;
+		String label = null;
 		
 		if (date == null)
 			date = new Date();
 		
-		start = getStartOfDay(date);
-		end = getEndOfDay(date);
+		if (dateRange == null || dateRange.equalsIgnoreCase("DAY")) {
+		
+			start = getStartOfDay(date);
+			end = getEndOfDay(date);
+			
+			DayOfWeek day = (dateToLocalDateTime(date)).getDayOfWeek();
+		    label = day.getDisplayName(TextStyle.FULL, Locale.getDefault());
+			
+		} else if (dateRange.equalsIgnoreCase("WEEK")) {
+			
+			Date[] dates = getWeekInterval(date);
+			start = dates[0];
+			end = dates[1];
+			
+		    label = "Weekly";
+			
+		} else if (dateRange.equalsIgnoreCase("MONTH")) {
+			
+			Date[] dates = getMonthInterval(date);
+			start = dates[0];
+			end = dates[1];
+			
+			Month month = (dateToLocalDateTime(date)).getMonth();
+		    label = month.getDisplayName(TextStyle.FULL, Locale.getDefault());
+		    
+		} else if (dateRange.equalsIgnoreCase("YEAR")) {
+			
+			Date[] dates = getYearInterval(date);
+			start = dates[0];
+			end = dates[1];
+			
+			label = "" + (dateToLocalDateTime(date)).getYear();
+		}
 		
 		// pipeline out
 		
-		IDataUtil.put(pipelineCursor, "dateTimeAtStartOfDate", start);
-		IDataUtil.put(pipelineCursor, "dateTimeAtEndOfDate", end);
-		pipelineCursor.destroy();
-		// --- <<IS-END>> ---
-
-                
-	}
-
-
-
-	public static final void dateToOptimizeDateTimeString (IData pipeline)
-        throws ServiceException
-	{
-		// --- <<IS-START(dateToOptimizeDateTimeString)>> ---
-		// @sigtype java 3.5
-		// [i] object:0:required date
-		// [o] field:0:required dateString
-		// pipeline in
+		IDataUtil.put(pipelineCursor, "start", start);
+		IDataUtil.put(pipelineCursor, "end", end);
+		IDataUtil.put(pipelineCursor, "label", label);
 		
-		IDataCursor pipelineCursor = pipeline.getCursor();
-		Date date = (Date) IDataUtil.get(pipelineCursor, "date");
-		pipelineCursor.destroy();
-		
-		// process
-		
-		if (date == null)
-			date = new Date();
-		
-		String dateString = "";
-		
-		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-		dateString = formatter.format(date) + "T";
-		
-		formatter = new SimpleDateFormat("HH:mm:ss");
-		dateString += formatter.format(date) + "%2B0000";
-		
-		dateString = dateString.replaceAll(":", "%3A");
-		// pipeline out
-		
-		IDataUtil.put(pipelineCursor, "dateString", dateString);
 		pipelineCursor.destroy();
 		// --- <<IS-END>> ---
 
@@ -114,7 +121,7 @@ public final class date
 	{
 		// --- <<IS-START(dateToString)>> ---
 		// @sigtype java 3.5
-		// [i] object:0:required date
+		// [i] object:0:optional date
 		// [i] field:0:required pattern
 		// [o] field:0:required stringDate
 		// pipeline in
@@ -125,15 +132,17 @@ public final class date
 		
 		// process
 		
-		if (date != null) {
+		if (date == null) {
+			date = new Date();
+		}
 					
-			DateFormat fmt = new SimpleDateFormat(pattern);
-			String stringDate = fmt.format(date);
+		DateFormat fmt = new SimpleDateFormat(pattern);
+		String stringDate = fmt.format(date);
 		
 		// pipeline out
 		
-			IDataUtil.put(pipelineCursor, "stringDate", stringDate);
-		}
+		IDataUtil.put(pipelineCursor, "stringDate", stringDate);
+		
 		
 		pipelineCursor.destroy();
 		// --- <<IS-END>> ---
@@ -182,7 +191,7 @@ public final class date
 	{
 		// --- <<IS-START(incrementDate)>> ---
 		// @sigtype java 3.5
-		// [i] object:0:required date
+		// [i] object:0:optional date
 		// [i] field:0:optional days
 		// [i] field:0:optional hours
 		// [i] field:0:optional minutes
@@ -208,6 +217,9 @@ public final class date
 		try { hoursInt += Integer.parseInt(hours);} catch(Exception e){}
 		try { minsInt = Integer.parseInt(minutes);} catch(Exception e){}
 		try { secsInt = Integer.parseInt(seconds);} catch(Exception e){}
+		
+		if (date == null)
+			date = new Date();
 		
 		date = DateTimeUtils.sumTimeToDate(date, hoursInt, minsInt, secsInt);
 		
@@ -266,6 +278,69 @@ public final class date
 	}
 
 	// --- <<IS-START-SHARED>> ---
+	
+	public static Date[] getWeekInterval(Date date) {
+		
+		ZoneId defaultZoneId = ZoneId.systemDefault();
+	
+		final DayOfWeek firstDayOfWeek = WeekFields.of(Locale.US).getFirstDayOfWeek();
+		final DayOfWeek lastDayOfWeek = DayOfWeek.of(((firstDayOfWeek.getValue() + 5) % DayOfWeek.values().length) + 1);
+		
+		LocalDate localDate = Instant.ofEpochMilli(date.getTime())
+			      .atZone(ZoneId.systemDefault())
+			      .toLocalDate();
+		
+		Date[] dates = new Date[2];
+	
+		dates[0] = Date.from(localDate.with(TemporalAdjusters.previousOrSame(firstDayOfWeek)).atStartOfDay(defaultZoneId).toInstant());
+		dates[1] = Date.from(localDate.with(TemporalAdjusters.nextOrSame(lastDayOfWeek)).atStartOfDay(defaultZoneId).toInstant());
+		
+		return dates;
+	}
+	
+	public static Date[] getMonthInterval(Date data) {
+	
+		Date[] dates = new Date[2];
+	
+		Calendar start = Calendar.getInstance();
+		Calendar end = Calendar.getInstance();
+	
+		start.setTime(data);
+		start.set(Calendar.DAY_OF_MONTH, start.getActualMinimum(Calendar.DAY_OF_MONTH));
+		start.set(Calendar.HOUR_OF_DAY, 0);
+		start.set(Calendar.MINUTE, 0);
+		start.set(Calendar.SECOND, 0);
+	
+		end.setTime(data);
+		end.set(Calendar.DAY_OF_MONTH, end.getActualMaximum(Calendar.DAY_OF_MONTH));
+		end.set(Calendar.HOUR_OF_DAY, 23);
+		end.set(Calendar.MINUTE, 59);
+		end.set(Calendar.SECOND, 59);
+	
+	//System.out.println("start "+ start.getTime());
+	//System.out.println("end   "+ end.getTime());
+	
+		dates[0] = start.getTime();
+		dates[1] = end.getTime();
+	
+		return dates;
+	}
+	
+	public static Date[] getYearInterval(Date date) {
+	
+		ZoneId defaultZoneId = ZoneId.systemDefault();
+		
+		LocalDate localDate = Instant.ofEpochMilli(date.getTime())
+			      .atZone(ZoneId.systemDefault())
+			      .toLocalDate();
+		
+		Date[] dates = new Date[2];
+		
+		dates[0] = Date.from(localDate.with(localDate.with(java.time.temporal.TemporalAdjusters.firstDayOfYear())).atStartOfDay(defaultZoneId).toInstant());
+		dates[1] = Date.from(localDate.with(localDate.with(java.time.temporal.TemporalAdjusters.lastDayOfYear())).atTime(23, 59).toInstant(ZoneOffset.MAX));
+		
+		return dates;
+	}
 	
 	public static Date getEndOfDay(Date date) 
 	{

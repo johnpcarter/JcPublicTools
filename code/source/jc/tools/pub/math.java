@@ -96,6 +96,33 @@ public final class math
                 
 	}
 
+
+
+	public static final void doubleToString (IData pipeline)
+        throws ServiceException
+	{
+		// --- <<IS-START(doubleToString)>> ---
+		// @sigtype java 3.5
+		// [i] object:0:required number
+		// [i] field:0:optional precision
+		// [o] field:0:required string
+		IDataCursor c = pipeline.getCursor();
+		Double d = (Double) IDataUtil.get(c,  "number");
+		String precision = IDataUtil.getString(c, "precision");
+		
+		// process
+		
+		if (precision == null)
+			precision = "2";
+		
+		IDataUtil.put(c, "string", String.format("%,."+precision+"f", d));
+		c.destroy();
+			
+		// --- <<IS-END>> ---
+
+                
+	}
+
 	// --- <<IS-START-SHARED>> ---
 	
 	public static double calculateMonthlyPayment(int loanAmount, int termInMonths, double interestRate) {

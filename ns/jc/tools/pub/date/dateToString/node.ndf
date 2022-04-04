@@ -28,6 +28,7 @@
           <value name="field_name">date</value>
           <value name="field_type">object</value>
           <value name="field_dim">0</value>
+          <value name="field_opt">true</value>
           <value name="wrapper_type">java.util.Date</value>
           <value name="nillable">true</value>
           <value name="form_qualified">false</value>

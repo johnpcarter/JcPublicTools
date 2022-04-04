@@ -688,6 +688,7 @@ public final class file
 		// [i] - object:0:optional bytes
 		// [i] - object:0:optional stream
 		// [i] object:0:optional append
+		// [i] object:0:optional appendNewLine
 		// [o] field:0:required fileNameOnly
 		// pipeline in
 		
@@ -701,11 +702,18 @@ public final class file
 				dataCursor.destroy();
 				
 				boolean append = false;
+				boolean appendNewLine = false;
+				
 				try {
 				append = (boolean) IDataUtil.get(pipelineCursor, "append");
 				} catch(Exception e) {
 					// ignore
 				}
+				try {
+					appendNewLine = (boolean) IDataUtil.get(pipelineCursor, "appendNewLine");
+					} catch(Exception e) {
+						// ignore
+					}
 				// process
 								
 				try
@@ -733,6 +741,9 @@ public final class file
 				    	outStream.write(buffer, 0, bytesRead);
 				    }
 				    
+				    if (appendNewLine) {
+				    	outStream.write(System.lineSeparator().getBytes());
+				    }
 				    in.close();
 				    outStream.close();
 				    

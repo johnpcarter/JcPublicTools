@@ -28,6 +28,7 @@
           <value name="field_name">date</value>
           <value name="field_type">object</value>
           <value name="field_dim">0</value>
+          <value name="field_opt">true</value>
           <value name="wrapper_type">java.util.Date</value>
           <value name="nillable">true</value>
           <value name="form_qualified">false</value>
@@ -157,7 +158,6 @@
   <value name="audit_level">off</value>
   <value name="check_internal_acls">no</value>
   <value name="icontext_policy">$null</value>
-  <value name="svcInvkURLAlias"></value>
   <value name="system_service">no</value>
   <value name="retry_max">0</value>
   <value name="retry_interval">0</value>
@@ -171,6 +171,17 @@
     <value name="startExecution">false</value>
     <value name="stopExecution">false</value>
     <value name="onError">true</value>
+  </record>
+  <record name="circuitbreakersettings" javaclass="com.wm.util.Values">
+    <value name="enabled">false</value>
+    <value name="failureEvent">1</value>
+    <value name="timeoutPeriod">60</value>
+    <value name="failureThreshold">5</value>
+    <value name="failurePeriod">60</value>
+    <value name="openAction">1</value>
+    <value name="serviceToInvoke"></value>
+    <value name="resetPeriod">300</value>
+    <value name="cancelThreadOnTimeout">false</value>
   </record>
   <array name="allowedHTTPMethods" type="value" depth="1">
     <value>HEAD</value>
