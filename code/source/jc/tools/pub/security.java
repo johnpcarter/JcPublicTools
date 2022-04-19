@@ -15,7 +15,9 @@ import java.security.Key;
 import java.security.KeyPair;
 import java.security.KeyPairGenerator;
 import java.security.NoSuchAlgorithmException;
+import java.security.NoSuchProviderException;
 import java.security.PrivateKey;
+import java.security.SecureRandom;
 import java.security.interfaces.RSAPublicKey;
 import java.util.Base64;
 import org.bouncycastle.asn1.ASN1Encodable;
@@ -65,8 +67,8 @@ public final class security
 		
 		try {
 			KeyPairGenerator kpg = KeyPairGenerator.getInstance("RSA");
-			
-			kpg.initialize(keySize);
+			kpg.initialize(keySize, new SecureRandom());
+			//kpg.initialize(keySize);
 			KeyPair kp = kpg.generateKeyPair();
 					
 			if (useSSH != null && useSSH.equalsIgnoreCase("true")) {
@@ -81,8 +83,7 @@ public final class security
 		} catch (NoSuchAlgorithmException e) {
 			throw new ServiceException("RSA algorithm not supported!");
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			throw new ServiceException(e);
 		}
 		
 		// pipeline out
@@ -99,6 +100,9 @@ public final class security
 	
 	private static final String PUB_KEY = "PUBLIC";
 	
+	private static final String SSH_RSA = "ssh-rsa";
+	//private static final String SSH_RSA = "rsa-sha2-256";
+			
 	private static String convertToRSAKey(Key key, String type) throws IOException {
 	
 		Base64.Encoder encoder = Base64.getEncoder();
@@ -121,15 +125,15 @@ public final class security
 		//String base64PubKey = encoder.encodeToString(key.getEncoded());
 	    ByteArrayOutputStream byteOs = new ByteArrayOutputStream();
 	    DataOutputStream dos = new DataOutputStream(byteOs);
-	    dos.writeInt("ssh-rsa".getBytes().length);
-	    dos.write("ssh-rsa".getBytes());
+	    dos.writeInt(SSH_RSA.getBytes().length);
+	    dos.write(SSH_RSA.getBytes());
 	    dos.writeInt(key.getPublicExponent().toByteArray().length);
 	    dos.write(key.getPublicExponent().toByteArray());
 	    dos.writeInt(key.getModulus().toByteArray().length);
 	    dos.write(key.getModulus().toByteArray());
 	    String publicKeyEncoded = new String(encoder.encodeToString(byteOs.toByteArray()));
 	    
-	    String keyStr =  "ssh-rsa " + publicKeyEncoded + " ";
+	    String keyStr =  SSH_RSA + " " + publicKeyEncoded + " ";
 	    writer.write(keyStr);		
 		writer.close();
 		

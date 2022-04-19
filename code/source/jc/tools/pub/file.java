@@ -88,11 +88,17 @@ public final class file
 		
 		try {
 			
-			if (!new File(tgtDirectory).exists());
-				new File(tgtDirectory).mkdirs();
-				
+			if (tgt == null && tgtDirectory == null)
+				throw new ServiceException("Must specify either tgtName or tgtDir");
+			
 			if (tgt == null)
 				tgt = src;
+			
+			if (tgtDirectory == null)
+				tgtDirectory = srcDirectory;
+			
+			if (!new File(tgtDirectory).exists());
+				new File(tgtDirectory).mkdirs();
 			
 			if  (new File(srcDirectory, src).isDirectory()) {
 				new DirCopier(FileSystems.getDefault().getPath(srcDirectory, src), FileSystems.getDefault().getPath(tgtDirectory, tgt)).copy(overwrite != null && overwrite.equalsIgnoreCase("true"));
@@ -482,7 +488,7 @@ public final class file
 		// [o] object:0:optional stream
 		IDataCursor c = pipeline.getCursor();
 		String fname = IDataUtil.getString(c, "fname");
-		String loadas = IDataUtil.getString(c, "loadAs");
+		String loadAs = IDataUtil.getString(c, "loadAs");
 		String ignoreError = IDataUtil.getString(c, "ignoreError");
 		
 		if (fname == null)
@@ -494,10 +500,11 @@ public final class file
 		InputStream in = null;
 		
 		try {
-			if (loadas != null && loadas.equalsIgnoreCase("stream"))
+			if (loadAs != null && loadAs.equalsIgnoreCase("stream")) {
 				in = new FileInputStream(new File(fname));
-			else
+			} else {
 				data = Files.readAllBytes(Paths.get(fname));
+			}
 		} catch (NoSuchFileException e ) {
 			if (ignoreError == null || !ignoreError.equalsIgnoreCase("true"))
 				throw new ServiceException(e);
@@ -512,7 +519,7 @@ public final class file
 		
 		if (data != null) {
 			
-			if (loadas != null && loadas.equalsIgnoreCase("string"))
+			if (loadAs != null && loadAs.equalsIgnoreCase("string"))
 				IDataUtil.put(c, "string", new String(data));
 			else
 				IDataUtil.put(c, "bytes", data);
@@ -520,6 +527,45 @@ public final class file
 		} else {
 			IDataUtil.put(c, "stream", in);
 		}
+		// --- <<IS-END>> ---
+
+                
+	}
+
+
+
+	public static final void readFileWithFilter (IData pipeline)
+        throws ServiceException
+	{
+		// --- <<IS-START(readFileWithFilter)>> ---
+		// @sigtype java 3.5
+		// [i] field:0:required fname
+		// [i] field:1:optional filters
+		// [i] field:0:required maxLines
+		// [o] field:1:required matchedLines
+		// [o] field:0:required matchedCount
+		// pipeline in
+		
+		IDataCursor pipelineCursor = pipeline.getCursor();
+		String fname = IDataUtil.getString(pipelineCursor, "fname");
+		String[] filters = IDataUtil.getStringArray(pipelineCursor, "filters");
+		String maxLines = IDataUtil.getString(pipelineCursor, "maxLines");
+		
+		// process
+		
+		int max = -1;
+		
+		try {max = Integer.parseInt(maxLines);} catch (Exception e) {}
+		
+		String[] matchedLines = readFileAsStringList(fname, filters, max);
+		
+		// pipeline out
+		
+		IDataUtil.put(pipelineCursor, "matchedLines", matchedLines);
+		IDataUtil.put(pipelineCursor, "matchedCount", "" + matchedLines.length);
+		pipelineCursor.destroy();
+		
+			
 		// --- <<IS-END>> ---
 
                 
@@ -584,7 +630,7 @@ public final class file
 		
 		// process
 		
-		String[] props = readFileAsStringList(filename);
+		String[] props = readFileAsStringList(filename, null, -1);
 		ArrayList<IData> out = new ArrayList<IData>();
 		
 		for (String p : props) {
@@ -883,7 +929,7 @@ public final class file
 		return null;
 	}
 	
-	private static String[] readFileAsStringList(String fname) throws ServiceException {
+	private static String[] readFileAsStringList(String fname, String[] filters, int maxLines) throws ServiceException {
 		
 		InputStream is = new ByteArrayInputStream(readFile(fname));
 		
@@ -892,13 +938,32 @@ public final class file
 		
 		try (BufferedReader rdr = new BufferedReader(new InputStreamReader(is));) {
 			while ((line=rdr.readLine()) != null) {
+				if (filters == null || match(line, filters))
 				lines.add(line);
+				
+				if (maxLines > 0 && lines.size() > maxLines) {
+					lines.remove(0);
+				}
 			}
 		} catch (IOException e) {
 			throw new ServiceException(e);
 		}
 			
 		return lines.toArray(new String[lines.size()]);
+	}
+	
+	private static boolean match(String line, String[] filters) {
+		
+		boolean match = false;
+		
+		for (String f : filters) {
+			if (line.contains(f)) {
+				match = true;
+				break;
+			}
+		}
+		
+		return match;
 	}
 	
 	private static byte[] readFile(String fname) throws ServiceException {

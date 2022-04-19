@@ -158,8 +158,9 @@ public final class date
 		// --- <<IS-START(diff)>> ---
 		// @sigtype java 3.5
 		// [i] object:0:required date1
-		// [i] object:0:required date2
+		// [i] object:0:optional date2
 		// [o] field:0:required diff
+		// [o] field:0:required diffInSeconds
 		// pipeline in
 		
 		IDataCursor pipelineCursor = pipeline.getCursor();
@@ -170,14 +171,19 @@ public final class date
 		
 		long diff = 0;
 		
-		if (date1 != null && date2 != null)
+		if (date1 != null)
 		{
+			if (date2 == null)
+				date2 = new Date();
+			
 			diff = date2.getTime() - date1.getTime();
 		}
 		
 		// pipeline out
 		
 		IDataUtil.put(pipelineCursor, "diff", "" + diff);
+		IDataUtil.put(pipelineCursor, "diffInSeconds", "" + diff / 1000);
+		
 		pipelineCursor.destroy();
 		// --- <<IS-END>> ---
 

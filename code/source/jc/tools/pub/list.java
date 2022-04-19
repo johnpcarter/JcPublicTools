@@ -187,7 +187,7 @@ public final class list
 		// process
 		
 		if (separator == null)
-			separator = ",";
+			separator = System.lineSeparator();
 		
 		String out = "";
 		
