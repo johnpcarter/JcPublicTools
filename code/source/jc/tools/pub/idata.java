@@ -605,7 +605,81 @@ public final class idata
                 
 	}
 
+
+
+	public static final void removeDuplicates (IData pipeline)
+        throws ServiceException
+	{
+		// --- <<IS-START(removeDuplicates)>> ---
+		// @sigtype java 3.5
+		// [i] record:1:required docListIn
+		// [i] field:0:required key
+		// [o] record:1:required docListOut
+		// pipeline in
+		
+		IDataCursor pipelineCursor = pipeline.getCursor();
+		IData[] docIn = IDataUtil.getIDataArray(pipelineCursor, "docListIn");
+		String searchKey = IDataUtil.getString(pipelineCursor, "key");
+		
+		// process
+					
+		List<Object> docOut = null;
+		
+		if (docIn != null) {					
+			ArrayList<String> processedKeys = new ArrayList<String>();
+			docOut = new ArrayList<Object>();
+			
+			for (IData doc : docIn) {
+				
+				IData notDupedDoc = checkForDuplicates(doc, searchKey, processedKeys);
+				
+				if (notDupedDoc != null)
+					docOut.add(notDupedDoc);
+			}
+		}
+				
+		// pipeline out
+			
+		if (docOut != null)
+			IDataUtil.put(pipelineCursor, "docListOut", docOut.toArray(new IData[docOut.size()]));
+		
+		pipelineCursor.destroy();
+		// --- <<IS-END>> ---
+
+                
+	}
+
 	// --- <<IS-START-SHARED>> ---
+	
+	private static IData checkForDuplicates(IData doc, String searchKey, ArrayList<String> processedKeys) {
+	
+		IDataCursor docCursor = doc.getCursor();
+		docCursor.home();
+		
+		while(docCursor.hasMoreData()) {
+			docCursor.next();
+		
+			String key = docCursor.getKey();
+			Object value = docCursor.getValue();
+			
+			if (searchKey != null && value instanceof String) {
+								
+				if (key.equals(searchKey) && !processedKeys.contains(value)) {
+										
+					processedKeys.add((String) value);
+					return doc;
+				}
+			} else if (value instanceof IData) {
+				if (checkForDuplicates((IData) value, searchKey, processedKeys) != null) {
+					return doc;
+				}
+			}
+		}
+		
+		docCursor.destroy();
+		
+		return null;
+	}
 	
 	private static IData merge(IData doc1, IData doc2) {
 				
