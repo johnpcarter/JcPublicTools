@@ -16,7 +16,10 @@ import com.softwareag.wx.idata2pojo.svc.NSNode;
 import com.softwareag.wx.idata2pojo.svc.RecordField;
 import com.softwareag.wx.idata2pojo.svc.ServiceNode;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.StringTokenizer;
 // --- <<IS-END-IMPORTS>> ---
 
@@ -518,6 +521,92 @@ public final class idata
 
 
 
+	public static final void makeDistinct (IData pipeline)
+        throws ServiceException
+	{
+		// --- <<IS-START(makeDistinct)>> ---
+		// @sigtype java 3.5
+		// [i] record:1:required documents
+		// [i] field:0:required keyIdentifier
+		// [i] field:0:optional groupBy
+		// [o] record:1:required distinctDocuments
+		// pipeline in
+		
+		IDataCursor pipelineCursor = pipeline.getCursor();
+		IData[]	documents = IDataUtil.getIDataArray(pipelineCursor, "documents");
+		String keyIdentifier = IDataUtil.getString(pipelineCursor, "keyIdentifier");
+		String groupBy = IDataUtil.getString(pipelineCursor, "groupBy");
+		
+		// process
+		
+		HashMap<Object, IData> distinctDocuments = new HashMap<Object, IData>();
+		
+		for (IData d : documents) {
+			
+			IDataCursor c = d.getCursor();
+			Object id = IDataUtil.get(c, keyIdentifier);
+			
+			if (id != null) {
+				System.out.println("id is " + id);
+				
+				IData existingObject = distinctDocuments.get(id);
+				if (existingObject == null) {
+					distinctDocuments.put(id, IDataUtil.clone(d));
+				} else {
+					// already have a reference, need to merge
+					
+					distinctDocuments.put(id, merge(d, existingObject, false, groupBy));
+				}
+			}
+			
+			c.destroy();
+		}
+		
+		// now convert array lists
+		
+		for (IData d : distinctDocuments.values()) {
+			
+			IDataCursor c = d.getCursor();
+			c.first();
+			
+			do {
+				
+				Object value = c.getValue();
+				
+				if (value instanceof List) {
+					if (((List<Object>) value).get(0) instanceof String) {
+						c.setValue(((List) value).toArray(new String[((List) value).size()]));
+					} else if (((List<Object>) value).get(0) instanceof Integer) {
+						c.setValue(((List) value).toArray(new Integer[((List) value).size()]));
+					} else if (((List<Object>) value).get(0) instanceof Long) {
+						c.setValue(((List) value).toArray(new Long[((List) value).size()]));
+					} else if (((List<Object>) value).get(0) instanceof Double) {
+						c.setValue(((List) value).toArray(new Double[((List) value).size()]));
+					} else if (((List<Object>) value).get(0) instanceof Float) {
+						c.setValue(((List) value).toArray(new Float[((List) value).size()]));
+					} else if (((List<Object>) value).get(0) instanceof Date) {
+						c.setValue(((List) value).toArray(new Date[((List) value).size()]));
+					}  else if (((List<Object>) value).get(0) instanceof IData) {
+						c.setValue(((List) value).toArray(new IData[((List) value).size()]));
+					} 
+				} else if (value instanceof Map) {
+					c.setValue(((Map) value).values().toArray(new IData[((Map) value).size()]));
+				}
+				
+			} while(c.next());
+		}
+		
+		// pipeline out
+		
+		IDataUtil.put(pipelineCursor, "distinctDocuments", distinctDocuments.values().toArray(new IData[distinctDocuments.size()]));
+		pipelineCursor.destroy();
+		// --- <<IS-END>> ---
+
+                
+	}
+
+
+
 	public static final void mergeDocumentLists (IData pipeline)
         throws ServiceException
 	{
@@ -556,7 +645,7 @@ public final class idata
 					} else {
 						// merge content
 						
-						out.set(i, merge(list2[i], list1[i]));
+						out.set(i, merge(list2[i], list1[i], true));
 					}
 				}
 				
@@ -592,7 +681,7 @@ public final class idata
 		
 		// process
 		
-		IData mergedDocument = merge(doc1, doc2);
+		IData mergedDocument = merge(doc1, doc2, true);
 		
 		// pipeline out
 		
@@ -681,7 +770,13 @@ public final class idata
 		return null;
 	}
 	
-	private static IData merge(IData doc1, IData doc2) {
+	@SuppressWarnings("unchecked")
+	private static IData merge(IData doc1, IData doc2, boolean overwrite) {
+		return merge(doc1, doc2, overwrite, null);
+	}
+	
+	@SuppressWarnings("unchecked")
+	private static IData merge(IData doc1, IData doc2, boolean overwrite, String groupBy) {
 				
 		if (doc2 != null) {
 			
@@ -689,14 +784,88 @@ public final class idata
 				IDataCursor d1 = doc1.getCursor();
 				IDataCursor d2 = doc2.getCursor();
 				
+				//HashMap<Object, IData> groupByRecords = null;
+				IData groupByDoc = null;
+				
+				// find groupByDoc in target doc
+				
+				if (groupBy != null) {
+					groupByDoc = findDocWithId(groupBy, d1, d2);
+				}
+				
+				// parse through source doc and copy values into target
+				
 				boolean hasMore = d1.first();
 				while (hasMore) {
 					
 					String key = d1.getKey();
-					Object defaultValue = d1.getValue();
-					Object value = IDataUtil.get(d2, key);
-										
-					IDataUtil.put(d2, key, value == null ? defaultValue : value);
+					Object valueD1 = d1.getValue();
+					Object valueD2 = IDataUtil.get(d2, key);
+			
+					if (valueD1 != null && groupByDoc != null) {
+						
+						HashMap<Object, IData> groupByRecords = getGroupByMap(groupBy, d2);
+						
+						if (valueD2 == null && groupByRecords.size() > 0) {
+							
+							// check if we have already moved valueD2 to child
+								
+							IDataCursor c = groupByRecords.get(groupByRecords.keySet().iterator().next()).getCursor();
+							valueD2 = IDataUtil.get(c, key);
+							c.destroy(); 
+						} else if (valueD2 != null && !valueD1.equals(valueD2)) {
+							
+							// we need to move d2 into it's own child record too!
+							
+							IData groupDocForD2 = findDocWithId(groupBy, d2, d2);
+							
+							if (groupDocForD2 != null) {
+								
+								System.out.println("moving key to child node " + key);
+	
+								IDataCursor c = groupDocForD2.getCursor();
+								IDataUtil.put(c, key, valueD2);
+								c.destroy();
+							
+								if (!key.equals(groupBy))
+									IDataUtil.remove(d2, key);
+							}
+						}
+						
+						if (overwrite || valueD1 == null || valueD2 == null || valueD1.equals(valueD2)) {
+							
+							// as below
+							System.out.println("writing key " + key);
+							
+							IDataUtil.put(d2, key, valueD2 == null ? valueD1 : valueD2);
+						} else {
+							
+							System.out.println("writing key to child node " + key);
+							
+							IDataCursor c = groupByDoc.getCursor();
+							IDataUtil.put(c, key, valueD1);
+							c.destroy(); 
+						}
+					} else {
+						
+						if (overwrite || valueD1 == null || valueD2 == null || valueD1.equals(valueD2)) {
+							System.out.println("writing key " + key);
+							
+							IDataUtil.put(d2, key, valueD2 == null ? valueD1 : valueD2);
+						} else {
+							System.out.println("merging key " + key);
+							
+							// don't want to overwrite, so convert to a list
+							if (valueD2 instanceof ArrayList) {
+								((ArrayList<Object>) valueD2).add(valueD1);
+							} else {
+								ArrayList<Object> valueList = new ArrayList<Object>();
+								valueList.add(valueD2);
+								valueList.add(valueD1);
+								IDataUtil.put(d2, key, valueList);
+							}
+						}
+					}
 					
 					hasMore = d1.next();
 					d2.next();
@@ -710,6 +879,44 @@ public final class idata
 		}
 		
 		return doc2;
+	}
+	
+	private static IData findDocWithId(String id, IDataCursor d1, IDataCursor d2) {
+	
+		IData groupByDoc = null;
+		HashMap<Object, IData> groupByRecords = null;
+		Object key = IDataUtil.get(d1, id);
+		
+		System.out.println("looking up key for " + id);
+		
+		if (key != null) {
+		
+			System.out.println("Will add element to groupBy with key " + key);
+			
+			groupByRecords = getGroupByMap(id, d2);
+			
+			groupByDoc = groupByRecords.get(key);
+			 
+			 if (groupByDoc == null) {
+				 groupByDoc = IDataFactory.create();
+				 groupByRecords.put(key, groupByDoc);
+			 }
+		}
+		
+		return groupByDoc;
+	}
+	
+	@SuppressWarnings("unchecked")
+	private static HashMap<Object, IData> getGroupByMap(String id, IDataCursor d2) {
+		
+		HashMap<Object, IData> groupByRecords = (HashMap<Object, IData>) IDataUtil.get(d2, id + "_group");
+		
+		if (groupByRecords == null) {
+			 groupByRecords = new HashMap<Object, IData>();
+			 IDataUtil.put(d2, id + "_group", groupByRecords);
+		}
+		
+		return groupByRecords;
 	}
 	
 	private static boolean noMatch(List<IData> out, IData record, String key) {
