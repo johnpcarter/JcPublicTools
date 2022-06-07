@@ -452,7 +452,6 @@ public final class idata
 		// [i] record:0:required doc
 		// [i] record:1:required extraInfo
 		// [i] - field:0:required key
-		// [i] - field:0:required type
 		// [i] - object:0:required value
 		// [o] record:0:required doc
 		// pipeline in
@@ -475,7 +474,6 @@ public final class idata
 				IDataCursor extraInfoCursor = extraInfo[i].getCursor();
 				String key = IDataUtil.getString(extraInfoCursor, "key");
 				Object value = IDataUtil.get(extraInfoCursor, "value");
-				String type = IDataUtil.getString(extraInfoCursor, "type");
 				extraInfoCursor.destroy();
 				
 				if (key != null && value != null && (prefix == null || key.startsWith(prefix)))
