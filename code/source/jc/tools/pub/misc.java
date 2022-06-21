@@ -84,40 +84,6 @@ public final class misc
 
 
 
-	public static final void getNextUniqueCode (IData pipeline)
-        throws ServiceException
-	{
-		// --- <<IS-START(getNextUniqueCode)>> ---
-		// @sigtype java 3.5
-		// [i] field:0:optional prefix
-		// [i] field:0:required numDigits
-		// [i] field:0:required numeric {"true","false"}
-		// [o] field:0:required code
-		IDataCursor c = pipeline.getCursor();
-		String numDigits = IDataUtil.getString(c, "numDigits");
-		String prefix = IDataUtil.getString(c, "prefix");
-		String numeric = IDataUtil.getString(c, "numeric");
-		
-		String nextCode;
-		
-		if (numeric != null && numeric.equalsIgnoreCase("true"))
-			nextCode = rotateNums(numDigits != null ? Integer.parseInt(numDigits) : 5);
-		else
-			nextCode = rotateChars(numDigits != null ? Integer.parseInt(numDigits) : 5);
-		
-		if (prefix != null)
-			nextCode = prefix + nextCode;
-		
-		IDataUtil.put(c, "code", nextCode);
-		
-		c.destroy();
-		// --- <<IS-END>> ---
-
-                
-	}
-
-
-
 	public static final void invokeAsync (IData pipeline)
         throws ServiceException
 	{

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Values version="2.0">
+  <value name="node_type">interface</value>
+  <value name="node_subtype">unknown</value>
+  <value name="node_nsName">jc.tools._priv</value>
+  <value name="is_public">false</value>
+  <value name="shared">CnN0YXRpYyBTdHJpbmcgemVyb3MgPSAiMDAwMDAwIjsKCnB1YmxpYyBzdGF0aWMgc3luY2hyb25p
+emVkIFN0cmluZyByb3RhdGVOdW1zKFN0cmluZyBjb2RlLCBpbnQgbnVtRGlnaXRzKQp7CglpbnQg
+biA9IDA7CgkKCWlmIChjb2RlICE9IG51bGwpIHsKCQl0cnkgeyBuID0gSW50ZWdlci5wYXJzZUlu
+dChjb2RlKSArIDE7IH0gY2F0Y2goRXhjZXB0aW9uIGUpIHt9Cgl9CgkJCQkJCglTdHJpbmcgbnVt
+ID0gIiIgKyBuOwoJCQkJCglpZiAobnVtLmxlbmd0aCgpID4gbnVtRGlnaXRzKSB7CgkJbnVtID0g
+IjAiOwoJfQoJCglpZiAobnVtRGlnaXRzIC0gbnVtLmxlbmd0aCgpID4gMCkKCQludW0gPSB6ZXJv
+cy5zdWJzdHJpbmcoMCwgbnVtRGlnaXRzIC0gbnVtLmxlbmd0aCgpKSArIG51bTsKCQkKCXJldHVy
+biBudW07Cn0KCQkKcHVibGljIHN0YXRpYyBzeW5jaHJvbml6ZWQgU3RyaW5nIHJvdGF0ZUNoYXJz
+KFN0cmluZyBjb2RlLCBpbnQgbnVtRGlnaXRzKQp7CgljaGFyW10gY2hhcnMgPSBuZXcgY2hhcltu
+dW1EaWdpdHNdOwoJCglpZiAoY29kZSAhPSBudWxsKSB7CQkKCQlmb3IgKGludCBpID0gMDsgaSA8
+IG51bURpZ2l0czsgaSsrKSB7CgkJCWlmIChpIDwgY29kZS5sZW5ndGgoKSkKCQkJCWNoYXJzW2ld
+ID0gY29kZS5jaGFyQXQoaSk7CgkJCWVsc2UKCQkJCWNoYXJzW2ldID0gJ0EnOwoJCX0KCX0KCQoJ
+aWYgKGNoYXJzWzRdKysgPT0gJ1onKQoJewoJCWNoYXJzWzRdID0gJ0EnOwoJCWNoYXJzWzNdICs9
+IDE7Cgl9CgkKCWlmIChudW1EaWdpdHMgPj0gMSAmJiBjaGFyc1szXSA9PSAnWicpCgl7CgkJY2hh
+cnNbM10gPSAnQSc7CgkJY2hhcnNbMl0gKz0gMTsKCX0KCQoJaWYgKG51bURpZ2l0cyA+IDIgJiYg
+Y2hhcnNbMl0gPT0gJ1onKQoJewoJCWNoYXJzWzJdID0gJ0EnOwoJCWNoYXJzWzFdICs9IDE7Cgl9
+CgkKCWlmIChudW1EaWdpdHMgPiAzICYmIGNoYXJzWzFdID09ICdaJykKCXsKCQljaGFyc1sxXSA9
+ICdBJzsKCQljaGFyc1swXSArPSAxOwoJfQoJCglpZiAobnVtRGlnaXRzID4gNCAmJiBjaGFyc1sw
+XSA9PSAnWicpCgl7CgkJLy8gcmVzZXQKCQkKCQljaGFyc1swXSA9ICdBJzsKCQljaGFyc1sxXSA9
+ICdBJzsKCQljaGFyc1syXSA9ICdBJzsKCQljaGFyc1szXSA9ICdBJzsKCQljaGFyc1s0XSA9ICdB
+JzsKCX0KCglpZiAobnVtRGlnaXRzID49IDUpCgkJcmV0dXJuICIiICsgY2hhcnNbMF0gKyBjaGFy
+c1sxXSArIGNoYXJzWzJdICsgY2hhcnNbM10gKyBjaGFyc1s0XTsKCWVsc2UgaWYgKG51bURpZ2l0
+cyA+PSA0KQoJCXJldHVybiAiIiArIGNoYXJzWzFdICsgY2hhcnNbMl0gKyBjaGFyc1szXSArIGNo
+YXJzWzRdOwoJZWxzZSBpZiAobnVtRGlnaXRzID49IDMpCgkJcmV0dXJuICIiICsgY2hhcnNbMl0g
+KyBjaGFyc1szXSArIGNoYXJzWzRdOwoJZWxzZQoJCXJldHVybiAiIiArIGNoYXJzWzNdICsgY2hh
+cnNbNF07Cn0KCQ==</value>
+  <value name="encodeutf8">true</value>
+  <value name="extends"></value>
+  <array name="implements" type="value" depth="1">
+  </array>
+  <array name="imports" type="value" depth="1">
+    <value>com.wm.util.GlobalVariables</value>
+    <value>com.wm.app.b2b.server.globalvariables.GlobalVariablesManager</value>
+    <value>java.io.IOException</value>
+    <value>java.math.BigInteger</value>
+    <value>java.nio.file.FileSystem</value>
+    <value>java.nio.file.FileSystems</value>
+    <value>java.nio.file.Files</value>
+    <value>java.nio.file.OpenOption</value>
+    <value>java.nio.file.Path</value>
+    <value>java.nio.file.StandardOpenOption</value>
+    <value>com.jc.wm.util.ServiceUtils</value>
+    <value>com.wm.app.b2b.server.ServerAPI</value>
+    <value>com.wm.app.b2b.server.ServerStartupNotifier</value>
+  </array>
+</Values>
