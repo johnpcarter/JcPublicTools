@@ -7,6 +7,7 @@ import com.wm.util.Values;
 import com.wm.app.b2b.server.Service;
 import com.wm.app.b2b.server.ServiceException;
 // --- <<IS-START-IMPORTS>> ---
+import com.wm.io.codec.CodecException;
 import com.wm.util.GlobalVariables;
 import com.wm.app.b2b.server.globalvariables.GlobalVariablesManager;
 import java.io.IOException;
@@ -57,9 +58,9 @@ public final class _priv
 		String nextCode;
 		
 		if (numeric != null && numeric.equalsIgnoreCase("true"))
-			nextCode = rotateNums(code, numDigits != null ? Integer.parseInt(numDigits) : 5);
+			nextCode = rotateNums(prefix, code, numDigits != null ? Integer.parseInt(numDigits) : 5);
 		else
-			nextCode = rotateChars(code, numDigits != null ? Integer.parseInt(numDigits) : 5);
+			nextCode = rotateChars(prefix, code, numDigits != null ? Integer.parseInt(numDigits) : 5);
 		
 		if (prefix != null)
 			nextCode = prefix + nextCode;
@@ -76,14 +77,19 @@ public final class _priv
 	
 	static String zeros = "000000";
 	
-	public static synchronized String rotateNums(String code, int numDigits)
+	public static synchronized String rotateNums(String prefix, String code, int numDigits)
 	{
 		int n = 0;
 		
 		if (code != null) {
+			
+			if (prefix != null && code.startsWith(prefix)) {
+				code = code.substring(prefix.length());
+			}
+			
 			try { n = Integer.parseInt(code) + 1; } catch(Exception e) {}
 		}
-						
+		
 		String num = "" + n;
 					
 		if (num.length() > numDigits) {
@@ -96,64 +102,66 @@ public final class _priv
 		return num;
 	}
 			
-	public static synchronized String rotateChars(String code, int numDigits)
+	public static synchronized String rotateChars(String prefix, String code, int numDigits)
 	{
 		char[] chars = new char[numDigits];
 		
 		if (code != null) {		
+						
+			if (prefix != null && code.startsWith(prefix)) {
+				code = code.substring(prefix.length());
+			}
+						
 			for (int i = 0; i < numDigits; i++) {
 				if (i < code.length())
 					chars[i] = code.charAt(i);
 				else
 					chars[i] = 'A';
 			}
-		}
-		
-		if (chars[4]++ == 'Z')
-		{
-			chars[4] = 'A';
-			chars[3] += 1;
-		}
-		
-		if (numDigits >= 1 && chars[3] == 'Z')
-		{
-			chars[3] = 'A';
-			chars[2] += 1;
-		}
-		
-		if (numDigits > 2 && chars[2] == 'Z')
-		{
-			chars[2] = 'A';
-			chars[1] += 1;
-		}
-		
-		if (numDigits > 3 && chars[1] == 'Z')
-		{
-			chars[1] = 'A';
-			chars[0] += 1;
-		}
-		
-		if (numDigits > 4 && chars[0] == 'Z')
-		{
-			// reset
+		} else {
 			
-			chars[0] = 'A';
-			chars[1] = 'A';
-			chars[2] = 'A';
-			chars[3] = 'A';
-			chars[4] = 'A';
+			if (numDigits < 5)
+				return "AAAAA".substring(0, numDigits);
+			else 
+				return "AAAAA";
 		}
-	
+		
+		chars = rotate(chars, numDigits-1);
+		
 		if (numDigits >= 5)
 			return "" + chars[0] + chars[1] + chars[2] + chars[3] + chars[4];
 		else if (numDigits >= 4)
-			return "" + chars[1] + chars[2] + chars[3] + chars[4];
+			return "" + chars[0] + chars[1] + chars[2] + chars[3];
 		else if (numDigits >= 3)
-			return "" + chars[2] + chars[3] + chars[4];
+			return "" + chars[0] + chars[1] + chars[2];
 		else
-			return "" + chars[3] + chars[4];
+			return "" + chars[0] + chars[1];
 	}
 		
+	private static char[] rotate(char[] chars, int index) {
+		
+		chars[index] += 1;
+		
+		if (chars[index] == 'Z') {
+			chars[index] = 'A';
+			
+			if (index == 0) {
+				
+				// reset!
+				
+				for (int i = 0; i < chars.length; i++) {
+					chars[i] = 'A';
+				}
+				
+				return chars;
+			} else {
+				return rotate(chars, index-
+						1);
+			}
+		} else {
+			return chars;
+		}
+	}
 	// --- <<IS-END-SHARED>> ---
 }
 
