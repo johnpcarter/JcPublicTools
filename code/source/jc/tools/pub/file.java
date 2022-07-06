@@ -91,7 +91,7 @@ public final class file
 			if (tgt == null && tgtDirectory == null)
 				throw new ServiceException("Must specify either tgtName or tgtDir");
 			
-			if (tgt == null)
+			if (tgt == null || tgt.length() == 0)
 				tgt = src;
 			
 			if (tgtDirectory == null)
@@ -102,14 +102,8 @@ public final class file
 			
 			if  (new File(srcDirectory, src).isDirectory()) {
 				new DirCopier(FileSystems.getDefault().getPath(srcDirectory, src), FileSystems.getDefault().getPath(tgtDirectory, tgt)).copy(overwrite != null && overwrite.equalsIgnoreCase("true"));
-			} else if (overwrite != null && overwrite.equalsIgnoreCase("true")) {
+			} else if (!(new File(tgtDirectory, tgt).exists()) || (overwrite != null && overwrite.equalsIgnoreCase("true"))) {
 				Files.copy(FileSystems.getDefault().getPath(srcDirectory, src), FileSystems.getDefault().getPath(tgtDirectory, tgt), StandardCopyOption.REPLACE_EXISTING);
-			} else {
-				try {
-					Files.copy(FileSystems.getDefault().getPath(srcDirectory, src), FileSystems.getDefault().getPath(tgtDirectory, tgt));
-				} catch (FileAlreadyExistsException e) {
-					ServerAPI.logError(e);
-				}
 			}
 		} catch (IOException e) {
 			throw new ServiceException(e);

@@ -818,9 +818,7 @@ public final class idata
 							IData groupDocForD2 = findDocWithId(groupBy, d2, d2);
 							
 							if (groupDocForD2 != null) {
-								
-								System.out.println("moving key to child node " + key);
-	
+									
 								IDataCursor c = groupDocForD2.getCursor();
 								IDataUtil.put(c, key, valueD2);
 								c.destroy();
@@ -832,27 +830,19 @@ public final class idata
 						
 						if (overwrite || valueD1 == null || valueD2 == null || valueD1.equals(valueD2)) {
 							
-							// as below
-							System.out.println("writing key " + key);
-							
+							// as below							
 							IDataUtil.put(d2, key, valueD2 == null ? valueD1 : valueD2);
 						} else {
-							
-							System.out.println("writing key to child node " + key);
-							
+														
 							IDataCursor c = groupByDoc.getCursor();
 							IDataUtil.put(c, key, valueD1);
 							c.destroy(); 
 						}
 					} else {
 						
-						if (overwrite || valueD1 == null || valueD2 == null || valueD1.equals(valueD2)) {
-							System.out.println("writing key " + key);
-							
+						if (overwrite || valueD1 == null || valueD2 == null || valueD1.equals(valueD2)) {							
 							IDataUtil.put(d2, key, valueD2 == null ? valueD1 : valueD2);
-						} else {
-							System.out.println("merging key " + key);
-							
+						} else {							
 							// don't want to overwrite, so convert to a list
 							if (valueD2 instanceof ArrayList) {
 								((ArrayList<Object>) valueD2).add(valueD1);
@@ -884,13 +874,9 @@ public final class idata
 		IData groupByDoc = null;
 		HashMap<Object, IData> groupByRecords = null;
 		Object key = IDataUtil.get(d1, id);
-		
-		System.out.println("looking up key for " + id);
-		
+				
 		if (key != null) {
-		
-			System.out.println("Will add element to groupBy with key " + key);
-			
+					
 			groupByRecords = getGroupByMap(id, d2);
 			
 			groupByDoc = groupByRecords.get(key);
