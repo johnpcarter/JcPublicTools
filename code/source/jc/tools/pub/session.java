@@ -56,6 +56,8 @@ public final class session
 				User usr = new User(id);
 				is.setUser(usr);
 			}
+		} else {
+			System.out.println("------- Don't have any session");
 		}
 		// --- <<IS-END>> ---
 
@@ -85,10 +87,12 @@ public final class session
 		
 		Object value = null;
 		
-		if (isStatic)
-			value = _staticMap.get(key);
-		else
-			value = Service.getSession().get(key);
+		if (key != null) {
+			if (isStatic)
+				value = _staticMap.get(key);
+			else
+				value = Service.getSession().get(key);
+		}
 		
 		// pipeline out
 		
