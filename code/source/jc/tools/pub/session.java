@@ -113,28 +113,32 @@ public final class session
 		// [o] field:0:required sessionID
 		// [o] field:0:required userID
 		// [o] field:0:required uniqueID
- String sessionId = null;
- String name = null;
- 
-    if (Service.getSession() != null) 
-    {
-        try {
-            sessionId = Service.getSession().getSessionID();
-            name = Service.getSession().getUser().getName();
-        } catch (Exception e) {
-            throw new RuntimeException("Unable to retrieve the session ID : " + e);
-        }
-    }
-
-    IDataCursor c = pipeline.getCursor();
-    IDataUtil.put(c, "sessionID", sessionId);
-    
-    if (name != null && !name.equals("Default") && !name.equals("webTaskUser"))
-    		IDataUtil.put(c, "userID", name);
-    
-    	IDataUtil.put(c, "uniqueID", sessionId + getNextCount());
-    c.destroy();
-   
+		 
+		String sessionId = null;
+		String name = null;
+		boolean isAdmin = false;
+		
+		if (Service.getSession() != null) {
+		        
+			try {
+				sessionId = Service.getSession().getSessionID();		            
+		        name = Service.getSession().getUser().getName();
+		        isAdmin = Service.getSession().getUser().isAdministrator();
+		    } catch (Exception e) {
+		    	throw new RuntimeException("Unable to retrieve the session ID : " + e);
+		    }
+		}
+		
+		IDataCursor c = pipeline.getCursor();
+		IDataUtil.put(c, "sessionID", sessionId);
+		    
+		if (name != null && !name.equals("Default") && !name.equals("webTaskUser"))
+			IDataUtil.put(c, "userID", name);
+		
+		IDataUtil.put(c, "isAdministrator", isAdmin);
+		IDataUtil.put(c, "uniqueID", sessionId + getNextCount());
+		c.destroy();
+		   
 		// --- <<IS-END>> ---
 
                 

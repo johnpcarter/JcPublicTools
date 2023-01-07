@@ -1,73 +1,445 @@
-<HTML>
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<meta name="Generator" content="John Carter" />
-		<title>JcPublicTools</title>
-		<link rel="stylesheet" href="default.css" />
-	</head>
-<body>
-<div class="header">
-	<div class="left_side">
-		<img class="right" src="images/sag_logo.png" alt="Software AG" />
-	</div>
-	<div class="right_side">
-		<h2>JcPublicTools</h2>
-	</div>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Package Home Page</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="./assets/@delite/dlt-components/css/delite.min.css">
+    <link rel="stylesheet" href="./assets/@delite/dlt-icons/Font/css/dlt-icons-font.css">
+    <link rel="stylesheet" href="./assets/@delite/dlt-icons/Font/css/dlt-icons-glyphs.css">
+    <script src="./assets/angular.min.js"></script>
+    <link rel="stylesheet" href="./assets/bootstrap/bootstrap.min.css">
+    <script src="./assets/jquery.min.js"></script>
+    <script src="./assets/bootstrap/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="./assets/swagger/swagger-ui.css">
+    <script src="./assets/swagger/swagger-ui-bundle.js"> </script>
+    <script src="./assets/swagger/swagger-ui-standalone-preset.js"> </script>
+    <script src="./assets/angular-route.js"></script>
+    <script type='text/javascript'>
+        var isAuthenticated = false;
+        var isDownload = false;
+    </script>
+    <script src="appInit.js"></script>
+    <script src="service.js"></script>
+
+    <link rel="stylesheet" href="./assets/style.css">
+    </link>
+</head>
+
+<body ng-app="myApp" ng-controller="myCtrl">
+<button onclick="backToTop()" id="tothetop" title="Go to top"><i class="dlt-icon-panel-control-up"></i></button>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+    <a class="navbar-brand text-truncate" href="#" data-toggle="tooltip" data-placement="bottom"
+       title="{{package.packageName}}"><b>{{package.packageName}}</b></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="navbar-collapse collapse" id="navbarNav">
+        <ul class="main-nav col-lg nav navbar-nav" style="flex-basis: auto;height: 64px;margin: 0;padding: 0;">
+            <li class="top-nav nav-item navbar-text main-nav-item active" id="main-home-li"
+                ng-class="{ 'active': current.activeTab == '#main-home' }">
+                <a class="nav-link active" id="main-home-tab" data-toggle="tab" href="#main-home" role="tab"
+                   aria-controls="main-home" aria-selected="true"
+                   ng-class="{ 'active': current.activeTab == '#main-home' }" style="color:white;">Home</a>
+            </li>
+            <li class="top-nav nav-item navbar-text" ng-class="{ 'active': current.activeTab == '#document' }"
+                id="document-li">
+                <a class="nav-link" id="document-tab" data-toggle="tab" href="#document" role="tab"
+                   aria-controls="document" aria-selected="false"
+                   ng-class="{ 'active': current.activeTab == '#document' }" style="color:white;">Explore</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="tab-content" id="pills-tabContent">
+    <div class="tab-pane fade show active" id="main-home" role="tabpanel" aria-labelledby="main-home-tab">
+        <!--Package Home Tab-->
+        <div class="container-fluid"
+             style="height: 95vh;display: flex;align-items: center;justify-content: center;">
+            <div class="row">
+                    <span style="font-size: 16px;font-weight: 500;">
+                        Welcome to the <div class="d-inline-block align-top text-truncate" style="max-width:20rem;"
+                                            data-toggle="tooltip" data-placement="bottom" title="{{package.packageName}}">
+                            {{package.packageName}}</div> package. Click <a id="homecontent"
+                                                                            href="#document"><b>Explore</b></a> to view the package information.
+                    </span>
+            </div>
+        </div>
+    </div>
+    <div class="tab-pane fade" id="document" role="tabpanel" aria-labelledby="document-tab">
+        <div class="container-fluid">
+            <div class="row">
+                <ul class="col-2 dlt-panel dlt-panel__left nav flex-column nav-pills side-navbar"
+                    style="font-size: 16px;padding-right: 0%;background-color:#f2f2f2;top:3.5rem;">
+                    <li class="nav-item sidenav-option">
+                        <a class="nav-link active sidenav-inneroption" id="about-tab" data-toggle="tab"
+                           href="#about" role="tab" aria-controls="about" aria-selected="true"><i
+                                class="dlt-icon-overview dlt-icon"
+                                style="font-size: 18px;margin-left: 10px;"></i><span style="margin-left: 10px;"
+                                                                                     id="about-text">About</span></a>
+                    </li>
+                    <li class="nav-item sidenav-option">
+                        <a class="nav-link sidenav-inneroption" id="service-tab" data-toggle="tab" href="#service"
+                           role="tab" aria-controls="service" aria-selected="false"><i
+                                class="dlt-icon-input-output dlt-icon"
+                                style="font-size: 18px;margin-left: 10px;"></i><span style="margin-left: 10px;"
+                                                                                     id="service-text">Services</span></a>
+                    </li>
+                    <li class="nav-item float-right sidenav-option">
+                        <a class="nav-link sidenav-inneroption" id="api-tab" data-toggle="tab" href="#api"
+                           role="tab" aria-controls="api" aria-selected="false"><i class="dlt-icon-deploy dlt-icon"
+                                                                                   style="font-size: 18px;margin-left: 10px;"></i><span style="margin-left: 10px;"
+                                                                                                                                        id="api-text">APIs</span></a>
+                    </li>
+                    <li class="dlt-panel-chevron">
+                        <button id="sub-panel" class="dlt-button dlt-button-icon dlt-panel-chevron__button"
+                                onClick="hideText()"><i class="dlt-icon-chevron-double-left dlt-icon"
+                                                        id="sub-panel-icon" style="font-size: 3em !important;
+                                color: black;"></i></button>
+                    </li>
+                </ul>
+                <div class="col-10" id="explore-content" style="left:14.5rem;top:5.5rem;">
+                    <div class="container">
+                        <div class="row">
+                            <div class="tab-content" id="myTabContent" style="width:100%;">
+                                <div class="tab-pane fade show active" id="about" role="tabpanel"
+                                     aria-labelledby="about-tab" style="padding-top:1rem;padding-left:1.3rem;">
+                                    <h2 class="mb-4" style="font-size: 1.5rem;display: inline-block;">Package
+                                        Details</h2>
+                                    <button class="dlt-button dlt-button-icon" style="font-size: 1.5rem;float:right;color:inherit;" onclick="openLink('/WmRoot/doc/OnlineHelp/index.html#page/is-onlinehelp%2FIS_Packages_PkgHomeScrn.html%23')"><i class="dlt-icon-help"></i></button>
+                                    <table id="detailstable" class="table table-bordered"
+                                           style="table-layout:fixed;width:100%;">
+                                        <tbody id="packagedetails">
+                                        <tr id="packagename">
+                                            <td style="width:20%;color:grey;">Package Name</td>
+                                            <td class="col-auto text-truncate" data-toggle="tooltip"
+                                                data-placement="bottom" title="{{package.packageName}}">
+                                                {{package.packageName}}</td>
+                                        </tr>
+                                        <tr id="displayname"
+                                            ng-if="package.displayName!=undefined&&package.displayName!=null&&package.displayName.trim()!=''">
+                                            <td style="width:20%;color:grey;">Display Name</td>
+                                            <td class="col-auto text-truncate" data-toggle="tooltip"
+                                                data-placement="bottom" title="{{package.displayName}}">
+                                                {{package.displayName}}</td>
+                                        </tr>
+                                        <tr id="version" ng-if="!(package.version==undefined||package.version==null||package.version.trim()=='')">
+                                            <td style="width:20%;color:grey;">Version</td>
+                                            <td class="col-auto">{{package.version}}</td>
+                                        </tr>
+                                        <tr id="description">
+                                            <td style="width:20%;color:grey;">Description</td>
+                                            <td class="col-auto"
+                                                ng-if="!(package.description==undefined||package.description==null||package.description.trim()=='')">
+                                                {{package.description}}</td>
+                                            <td class="col-auto text-wrap"
+                                                style="resize: none;font-style: italic;color:darkgray;"
+                                                id="description"
+                                                ng-if="package.description==undefined||package.description==null||package.description.trim()==''">
+                                                No package description included, please include via the package
+                                                properties</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="col-auto tab-pane fade mt-2" id="service" role="tabpanel"
+                                     aria-labelledby="service-tab"
+                                     style="width:100%;padding-top:1rem;padding-left:1.3rem;">
+                                    <h2 class="mb-4" style="font-size: 1.5rem;display: inline-block;">Services</h2>
+                                    <button class="dlt-button dlt-button-icon" style="font-size: 1.5rem;float:right;color:inherit;" onclick="openLink('/WmRoot/doc/OnlineHelp/index.html#page/is-onlinehelp%2FIS_Packages_PkgServicesScrn.html%23')"><i class="dlt-icon-help"></i></button>
+                                    <div id="services"
+                                         ng-if="!(services!=null&&services!=undefined&&services.length!=0)">
+                                        No services with comments found.
+                                        <div class="alert alert-primary" style="color: #1776bf;margin-top: 1rem;"
+                                             role="alert">
+                                            Note: The Services list shows only the services with comments.
+                                        </div>
+                                    </div>
+                                    <div id="services"
+                                         ng-if="services!=null&&services!=undefined&&services.length!=0"
+                                         style="width:100%;">
+                                        <ul class="dlt-accordion" role="tablist" style="width:100%;"
+                                            data-allow-multiple>
+                                            <li class="dlt-accordion-item" role="tab"
+                                                ng-repeat="service in services track by $index"
+                                                style="box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);margin-bottom:0.5em;">
+                                                <button aria-expanded="false" id="service{{$index}}"
+                                                        class="text-truncate dlt-accordion-title"
+                                                        style="text-overflow: ellipsis;background:transparent;"
+                                                        data-toggle="tooltip" data-placement="bottom"
+                                                        title="{{service['serviceName']}}">
+                                                    <i class="dlt-accordion-arrow dlt-icon-chevron-right"></i>
+                                                    {{service['serviceName']}} &nbsp<span
+                                                        ng-if="!(service['displayName']==undefined||service['displayName']==null||service['displayName'].trim()=='')">({{service['displayName']}})</span></button>
+                                                <div id="servicebody{{$index}}" class="dlt-accordion-content"
+                                                     aria-labelledby="service{{$index}}" role="tabpanel">
+                                                    <div class="row mt-2"
+                                                         ng-if="!(service['displayName']==undefined||service['displayName']==null||service['displayName'].trim()=='')">
+                                                        <h5 class="col-sm-6">{{service['displayName']}}</h5>
+                                                    </div>
+                                                    <div class="row mt-2">
+                                                        <p class="col-auto card-text service-description">
+                                                            {{service['description']}}</p>
+                                                    </div>
+                                                    <div class="row col-auto mt-2">
+                                                            <span class="badge badge-secondary mr-1"
+                                                                  ng-repeat="tag in service['tags'] track by $index">{{tag}}</span>
+                                                    </div>
+                                                    <div class="row mt-2 pb-2">
+                                                        <div class="col-sm-6">
+                                                            <div class="card" style="height:100%;">
+                                                                <div class="card-body">
+                                                                    <h5 class="card-title">Input</h5>
+                                                                    <div ng-if="service['serviceinputs']==undefined||service['serviceinputs']==null||service['serviceinputs'].length==0"
+                                                                         class="card-text">No Inputs</div>
+                                                                    <table
+                                                                            ng-if="service['serviceinputs']!=undefined&&service['serviceinputs']!=null&&service['serviceinputs'].length!=0"
+                                                                            style="padding: 0 10px;width: 100%;max-height:100%;">
+                                                                        <thead>
+                                                                        <tr>
+                                                                            <th>Name</th>
+                                                                            <th>Type</th>
+                                                                            <th>Wrapper Type</th>
+                                                                            <th style="width: 3rem;"></th>
+                                                                        </tr>
+                                                                        </thead>
+                                                                        <tbody>
+                                                                        <tr class="collapsed highlight-row input-row"
+                                                                            ng-repeat-start="input in service['serviceinputs']">
+                                                                            <td
+                                                                                    style="max-width:10rem;white-space: nowrap;">
+                                                                                <div class="d-inline-block align-top text-truncate"
+                                                                                     style="max-width:90%;"
+                                                                                     data-toggle="tooltip"
+                                                                                     data-placement="bottom"
+                                                                                     id="{{$parent.$index}}{{$index}}iname"
+                                                                                     title="{{input['inputName']}}">
+                                                                                    {{input['inputName']}}</div>
+                                                                                <sup style="color:red;"
+                                                                                     ng-if="input.required != undefined && input.required"
+                                                                                     data-toggle="tooltip"
+                                                                                     data-placement="bottom"
+                                                                                     title="required">*<sup>
+                                                                            </td>
+                                                                            <td>
+                                                                                <div class="d-inline-block align-top text-truncate"
+                                                                                     style="max-width:100%;"
+                                                                                     data-toggle="tooltip"
+                                                                                     data-placement="bottom"
+                                                                                     id="{{$parent.$index}}{{$index}}itype"
+                                                                                     title="{{input['inputType']}}">
+                                                                                    {{input['inputType']}}</div>
+                                                                            </td>
+                                                                            <td>
+                                                                                <div class="d-inline-block align-top text-truncate"
+                                                                                     style="max-width:100%;"
+                                                                                     data-toggle="tooltip"
+                                                                                     data-placement="bottom"
+                                                                                     id="{{$parent.$index}}{{$index}}iwr"
+                                                                                     title="{{ input['wrapperType']=='--' ? 'unknown or not applicable' : input['wrapperType']}}">
+                                                                                    {{input['wrapperType']}}
+                                                                                </div>
+                                                                            </td>
+                                                                            <td data-toggle="tooltip"
+                                                                                data-placement="bottom"
+                                                                                title="comments"><button
+                                                                                    type="button"
+                                                                                    class="btn serv-des collapsed"
+                                                                                    style="max-width:3rem;background: transparent;"
+                                                                                    data-toggle="collapse"
+                                                                                    data-target="#{{$parent.$index}}{{$index}}i"
+                                                                                    aria-expanded="false"
+                                                                                    aria-controls="{{$parent.$index}}{{$index}}i"><i
+                                                                                    class="arrow-down"
+                                                                                    aria-hidden="true"></i></button>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr class="io-row collapse text-wrap"
+                                                                            ng-repeat-end aria-expanded="false"
+                                                                            id="{{$parent.$index}}{{$index}}i"
+                                                                            aria-labelledby="{{$parent.$index}}{{$index}}i">
+                                                                            <td colspan="4">
+                                                                                {{input['inputComments']}}</td>
+                                                                        </tr>
+                                                                        </tbody>
+                                                                    </table>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-6">
+                                                            <div class="card" style="height:100%;">
+                                                                <div class="card-body" style="height:100%;">
+                                                                    <h5 class="card-title">Output</h5>
+                                                                    <div ng-if="service['serviceoutputs']==undefined||service['serviceoutputs']==null||service['serviceoutputs'].length==0"
+                                                                         class="card-text">No Outputs</div>
+                                                                    <table
+                                                                            ng-if="service['serviceoutputs']!=undefined&&service['serviceoutputs']!=null&&service['serviceoutputs'].length!=0"
+                                                                            style="padding: 0 10px;width: 100%;max-height:100%;">
+                                                                        <thead>
+                                                                        <tr>
+                                                                            <th>Name</th>
+                                                                            <th>Type</th>
+                                                                            <th>Wrapper Type</th>
+                                                                            <th style="width: 3rem;"></th>
+                                                                        </tr>
+                                                                        </thead>
+                                                                        <tbody>
+                                                                        <tr class="collapsed highlight-row output-row"
+                                                                            ng-repeat-start="output in service['serviceoutputs']">
+                                                                            <td
+                                                                                    style="max-width:10rem;white-space: nowrap;">
+                                                                                <div class="d-inline-block align-top text-truncate"
+                                                                                     style="max-width:90%;"
+                                                                                     data-toggle="tooltip"
+                                                                                     data-placement="bottom"
+                                                                                     id="{{$parent.$index}}{{$index}}oname"
+                                                                                     title="{{output['outputName']}}">
+                                                                                    {{output['outputName']}}
+                                                                                    <sup style="color:red;"
+                                                                                         ng-if="output.required != undefined && output.required"
+                                                                                         data-toggle="tooltip"
+                                                                                         data-placement="bottom"
+                                                                                         title="required">*<sup>
+                                                                                </div>
+                                                                            </td>
+                                                                            <td>
+                                                                                <div class="d-inline-block align-top text-truncate"
+                                                                                     style="max-width:100%;"
+                                                                                     data-toggle="tooltip"
+                                                                                     data-placement="bottom"
+                                                                                     id="{{$parent.$index}}{{$index}}otype"
+                                                                                     title="{{output['outputType']}}">
+                                                                                    {{output['outputType']}}
+                                                                                </div>
+                                                                            </td>
+                                                                            <td>
+                                                                                <div class="d-inline-block align-top text-truncate"
+                                                                                     style="max-width:100%;"
+                                                                                     data-toggle="tooltip"
+                                                                                     data-placement="bottom"
+                                                                                     id="{{$parent.$index}}{{$index}}owr"
+                                                                                     title="{{ output['wrapperType']=='--' ? 'unknown or not applicable' : output['wrapperType']}}">
+                                                                                    {{output['wrapperType']}}
+                                                                                </div>
+                                                                            </td>
+                                                                            <td data-toggle="tooltip"
+                                                                                data-placement="bottom"
+                                                                                title="comments"><button
+                                                                                    type="button"
+                                                                                    class="btn serv-des collapsed"
+                                                                                    style="width: 3rem;background: transparent;"
+                                                                                    data-toggle="collapse"
+                                                                                    data-target="#{{$parent.$index}}{{$index}}o"
+                                                                                    aria-expanded="false"
+                                                                                    aria-controls="{{$parent.$index}}{{$index}}o"><i
+                                                                                    class="arrow-down"
+                                                                                    aria-hidden="true"></i></button>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr class="io-row collapse text-wrap"
+                                                                            ng-repeat-end aria-expanded="false"
+                                                                            id="{{$parent.$index}}{{$index}}o"
+                                                                            aria-labelledby="{{$parent.$index}}{{$index}}o">
+                                                                            <td colspan="4">
+                                                                                {{output['outputComments']}}
+                                                                            </td>
+                                                                        </tr>
+                                                                        </tbody>
+                                                                    </table>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                        <div class="alert alert-primary" style="color: #1776bf;margin-top: 1rem;"
+                                             role="alert">
+                                            Note: The Services list shows only the services with comments.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade mt-2" id="api" role="tabpanel" aria-labelledby="api-tab"
+                                     style="padding-top:1rem;padding-left:1.3rem;">
+                                    <h2 class="mb-4" style="font-size: 1.5rem;display: inline-block;">APIs</h2>
+                                    <button class="dlt-button dlt-button-icon" style="font-size: 1.5rem;float:right;color:inherit;" onclick="openLink('/WmRoot/doc/OnlineHelp/index.html#page/is-onlinehelp%2FIS_Packages_PkgAPIsScrn.html%23')"> <i class="dlt-icon-help"></i></button>
+                                    <div id="apis" ng-if="!(apis!=null&&apis!=undefined&&apis.length!=0)">
+                                        No APIs found.
+                                        <div class="alert alert-primary" style="color: #1776bf;margin-top: 1rem;"
+                                             role="alert">
+                                            Note: The API list shows only the Provider REST API descriptors (RAD).
+                                        </div>
+                                    </div>
+                                    <div id="apis" ng-if="apis!=null&&apis!=undefined&&apis.length!=0"
+                                         style="width:100%;">
+                                        <ul class="dlt-accordion" role="tablist" style="width:100%;"
+                                            data-allow-multiple>
+                                            <li class="dlt-accordion-item" role="tab"
+                                                ng-repeat="api in apis track by $index" style="box-shadow: inset 0 1px 0 0 #e5e5e5, inset 0 1px 0 0 #e5e5e5, 0 10px 20px rgb(0 0 0 / 19%), 0 6px 6px rgb(0 0 0 / 23%);
+                                                margin-bottom: 0.5em;
+                                                background: white;
+                                                border: none;">
+                                                    <span class="buttons-wrapper dlt-accordion-title">
+                                                        <button aria-expanded="false" id="api{{$index}}"
+                                                                class="seemingly-outer-button text-truncate"
+                                                                style="text-overflow: ellipsis;display:inline;display: flex;align-items: center;text-align:left;"
+                                                                data-toggle="tooltip" data-placement="bottom"
+                                                                title="{{api['name']}}">
+                                                            <i class="dlt-accordion-arrow dlt-icon-chevron-right"></i>
+                                                            {{api['name']}} <small class="title-block version-stamp"
+                                                                                   ng-if="api['spec']['openapi']!=null">
+                                                                <pre class="version">OAS3</pre>
+                                                            </small>
+                                                        </button>
+                                                        <button
+                                                                class="download seemingly-inner-button dlt-button dlt-button-icon button-icon-md"
+                                                                type="button" id="dropdown-api{{$index}}"
+                                                                data-toggle="dropdown" aria-haspopup="true"
+                                                                aria-expanded="false">
+                                                            <i class="dlt-icon-more-menu"></i></button>
+                                                        <span class="dropdown-menu  dropdown-menu-right"
+                                                              aria-labelledby="dropdown-api{{$index}}" style=" border-radius: 0;
+                                                        box-shadow: 0 2px 12px 2px rgb(0 0 0 / 12%);
+                                                        padding: .5rem 0;
+                                                        background: #fff;">
+                                                            <button class="dropdown-item" data-toggle="dropdown"
+                                                                    name="api{{$index}}" type="button"
+                                                                    onClick="downloadJson(this)">Download as JSON</button>
+                                                            <button class="dropdown-item" data-toggle="dropdown"
+                                                                    name="api{{$index}}" type="button"
+                                                                    onClick="downloadYaml(this)">Download as YAML</button>
+                                                        </span>
+                                                    </span>
+                                                <div id="apibody{{$index}}" class="dlt-accordion-content"
+                                                     aria-labelledby="api{{$index}}" role="tabpanel"
+                                                     data-parent="#apis" style="overflow-y: auto;">
+
+                                                    <div id="swagger-ui-{{$index}}"
+                                                         onload="changeDisplay('try-out','none')"
+                                                         style="max-height: 100%;"></div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                        <div class="alert alert-primary" style="color: #1776bf;margin-top: 1rem;"
+                                             role="alert">
+                                            Note: The API list shows only the Provider REST API descriptors (RAD).
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-<div class="main">
-	<div class="left_side_body">
-		<p>Reusable services to extend standard integration service WmPublic package. This package should be installed 
-			on all Integration Servers. Refer to services link for more information.</p>
-	</div>
-	<div class="right_side_body">
-		<div class="box">
-			<p style="padding-top: 5pt;">
-				<span class="bullet">Package Name</span>
-				<p>JcPublicTools</p>
-			</p>
-			<p>
-				<span class="bullet">Author</span>
-				<p>John Carter</p>
-			</p>
-			<p>
-				<span class="bullet">Creation Date</span>
-				<p>01-11-2015</p>
-			</p>
-			<p>
-				<span class="bullet">Last Modified</span>
-				<p>19-11-2015</p>
-			</p>
-			<p>
-				<span class="bullet">Version</span>
-				<p>1.0</p>
-			</p>
-			<p>
-				<span class="bullet">Build</span>
-				<p>2</p>
-			</p>
-		</div>
-		</br>
-		<div style="text-align: right;" class="box">
-			<p style="padding-top: 5pt;">
-				<span class="bullet"><a href="release.txt">Release Notes</a></span>
-			</p>
-			<p>
-				<span class="bullet"><a href="services/index.html">Services</a></span>
-			</p>
-			<p>
-				<span class="bullet"><a href="api">API</a></span>
-			</p>
-			<p>
-				<span class="bullet">Source Code(Eclipse)
-				<br><small><a href="ActiveDirectoryListener_src.zip">download</a></small>
-				</span>
-			</p>
-			<p>
-		</div>
-	</div>
 </div>
-<div class="footer">
-	<p style="text-align: right; color: #999999; padding-right: 20px;" class="small">John Carter(integrate@johncarter.eu)
-</div> 
+
 </body>
-</HTML>
+<script src="assets/@delite/dlt-components/js/delite.min.js"></script>
+
+</html>

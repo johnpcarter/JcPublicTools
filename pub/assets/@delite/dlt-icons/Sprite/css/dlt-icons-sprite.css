@@ -1,0 +1,31 @@
+/*!
+* 
+* ##----------------------------------------------------------------##
+*
+*          @delite/dlt-icons v1.1.5
+*          Delite icon library
+*
+*          Copyright (c) delite@softwareag.com
+*          For license information see license in saglicense.txt
+*          found in the root directory of the source tree.
+*
+* ##----------------------------------------------------------------##
+*
+*/
+
+.dlt-icon-svg {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+}
+
+/* ==========================================
+Single-colored icons can be modified like so:
+.dlt-icon-name {
+  font-size: 32px;
+  color: red;
+}
+========================================== */

@@ -73,6 +73,23 @@
           <value name="node_subtype">unknown</value>
           <value name="node_comment"></value>
           <record name="node_hints" javaclass="com.wm.util.Values">
+            <value name="field_largerEditor">false</value>
+            <value name="field_password">false</value>
+          </record>
+          <value name="is_public">false</value>
+          <value name="field_name">isAdministrator</value>
+          <value name="field_type">object</value>
+          <value name="field_dim">0</value>
+          <value name="wrapper_type">java.lang.Boolean</value>
+          <value name="nillable">true</value>
+          <value name="form_qualified">false</value>
+          <value name="is_global">false</value>
+        </record>
+        <record javaclass="com.wm.util.Values">
+          <value name="node_type">record</value>
+          <value name="node_subtype">unknown</value>
+          <value name="node_comment"></value>
+          <record name="node_hints" javaclass="com.wm.util.Values">
             <value name="field_usereditable">true</value>
             <value name="field_largerEditor">false</value>
             <value name="field_password">false</value>
@@ -124,6 +141,10 @@
     <value name="serviceToInvoke"></value>
     <value name="resetPeriod">300</value>
     <value name="cancelThreadOnTimeout">false</value>
+  </record>
+  <record name="concurrentrequestlimitsettings" javaclass="com.wm.util.Values">
+    <value name="maxConcurrentRequests">20</value>
+    <value name="concurrentRequestLimitEnabled">false</value>
   </record>
   <array name="allowedHTTPMethods" type="value" depth="1">
     <value>HEAD</value>

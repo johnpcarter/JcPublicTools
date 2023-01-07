@@ -1,0 +1,15 @@
+/* 
+DELITE ICON PACK
+
+As of dlt-icons v2.0, the glyphs are merged in to 
+one single css to reduce the http calls to the server. 
+This file is here as backward compatibility for 
+the teams who have added references to both 
+the css as per our previous package. 
+
+Note: 
+
+If you are using the package for the first time or if it is easy to remove 
+the references from your codebase, please ignore this css reference.
+
+*/
