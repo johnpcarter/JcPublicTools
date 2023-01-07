@@ -3,12 +3,35 @@
 <Values version="2.0">
   <value name="enabled">yes</value>
   <value name="system_package">no</value>
-  <value name="version">1.0</value>
+  <value name="version">5.0</value>
   <null name="startup_services"/>
   <null name="shutdown_services"/>
   <null name="replication_services"/>
   <null name="requires"/>
-  <null name="listACL"/>
+  <value name="listACL">Default</value>
   <value name="webappLoad">yes</value>
   <value name="classloader">package</value>
+  <value name="reloadWithDependentPackage">yes</value>
+  <value name="build">151</value>
+  <value name="description">A complimentary set of services to use with your webMethods runtime to develop integration faster. 
+Service documentation is available in Designer via the comments of each service.</value>
+  <null name="created_date"/>
+  <array name="extendedProperties" type="record" depth="1">
+    <record javaclass="com.wm.util.Values">
+      <value name="key">displayName</value>
+      <value name="value">John Carter's toolbox</value>
+    </record>
+    <record javaclass="com.wm.util.Values">
+      <value name="key">trusted</value>
+      <value name="value">yes</value>
+    </record>
+    <record javaclass="com.wm.util.Values">
+      <value name="key">status</value>
+      <value name="value">Production</value>
+    </record>
+    <record javaclass="com.wm.util.Values">
+      <value name="key">tags</value>
+      <value name="value">utility</value>
+    </record>
+  </array>
 </Values>
