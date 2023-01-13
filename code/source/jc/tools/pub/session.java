@@ -112,6 +112,7 @@ public final class session
 		// @sigtype java 3.5
 		// [o] field:0:required sessionID
 		// [o] field:0:required userID
+		// [o] object:0:required isAdministrator
 		// [o] field:0:required uniqueID
 		 
 		String sessionId = null;
