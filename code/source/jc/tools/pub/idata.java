@@ -47,7 +47,9 @@ public final class idata
 		// [i] record:1:required inList
 		// [i] field:0:required pattern
 		// [o] record:1:required outList
+		
 		// pipeline in
+		
 		IDataCursor pipelineCursor = pipeline.getCursor();
 		IData[]	inList = IDataUtil.getIDataArray(pipelineCursor, "inList");
 		String	pattern = IDataUtil.getString(pipelineCursor, "pattern");

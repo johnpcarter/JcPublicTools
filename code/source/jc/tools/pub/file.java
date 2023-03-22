@@ -74,7 +74,7 @@ public final class file
 		// [i] field:0:optional overwrite {"true","false"}
 		// [o] field:0:required tgtPath
 		// pipeline in
-		
+		 
 		IDataCursor pipelineCursor = pipeline.getCursor();
 		String srcDirectory = IDataUtil.getString( pipelineCursor, "srcDir");
 		String src = IDataUtil.getString( pipelineCursor, "srcName");

@@ -43,6 +43,22 @@ public final class date
 
 
 
+	public static final void currentYear (IData pipeline)
+        throws ServiceException
+	{
+		// --- <<IS-START(currentYear)>> ---
+		// @sigtype java 3.5
+		// [o] field:0:required currentYear
+		IDataCursor cursor = pipeline.getCursor();
+		IDataUtil.put(cursor, "currentYear", "" + java.time.Year.now().getValue());
+		cursor.destroy();
+		// --- <<IS-END>> ---
+
+                
+	}
+
+
+
 	public static final void dateTimeRangeForDayDate (IData pipeline)
         throws ServiceException
 	{
