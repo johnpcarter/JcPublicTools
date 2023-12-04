@@ -12,7 +12,7 @@
   <value name="webappLoad">yes</value>
   <value name="classloader">package</value>
   <value name="reloadWithDependentPackage">yes</value>
-  <value name="build">151</value>
+  <value name="build">152</value>
   <value name="description">A complimentary set of services to use with your webMethods runtime to develop integration faster. 
 Service documentation is available in Designer via the comments of each service.</value>
   <null name="created_date"/>
