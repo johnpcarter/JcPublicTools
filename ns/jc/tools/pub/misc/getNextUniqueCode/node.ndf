@@ -9,6 +9,12 @@
       <value name="node_type">record</value>
       <value name="node_subtype">unknown</value>
       <value name="is_public">false</value>
+      <value name="displayName"></value>
+      <value name="favorite"></value>
+      <value name="tags"></value>
+      <value name="since"></value>
+      <value name="deprecated"></value>
+      <value name="is_visible"></value>
       <value name="field_type">record</value>
       <value name="field_dim">0</value>
       <value name="wrapper_type">IData</value>
@@ -83,6 +89,12 @@
       <value name="node_type">record</value>
       <value name="node_subtype">unknown</value>
       <value name="is_public">false</value>
+      <value name="displayName"></value>
+      <value name="favorite"></value>
+      <value name="tags"></value>
+      <value name="since"></value>
+      <value name="deprecated"></value>
+      <value name="is_visible"></value>
       <value name="field_type">record</value>
       <value name="field_dim">0</value>
       <value name="wrapper_type">IData</value>
@@ -115,7 +127,7 @@
       <value name="modifiable">true</value>
     </record>
   </record>
-  <value name="node_comment"></value>
+  <value name="node_comment">Gets a unique identifier</value>
   <value name="stateless">yes</value>
   <value name="caching">no</value>
   <value name="prefetch">no</value>
@@ -148,6 +160,10 @@
     <value name="serviceToInvoke"></value>
     <value name="resetPeriod">300</value>
     <value name="cancelThreadOnTimeout">false</value>
+  </record>
+  <record name="concurrentrequestlimitsettings" javaclass="com.wm.util.Values">
+    <value name="maxConcurrentRequests">20</value>
+    <value name="concurrentRequestLimitEnabled">false</value>
   </record>
   <array name="allowedHTTPMethods" type="value" depth="1">
     <value>TRACE</value>
